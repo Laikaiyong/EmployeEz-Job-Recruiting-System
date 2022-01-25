@@ -1,10 +1,10 @@
 <template>
   <div class="max-w-7xl mx-auto">
-        <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+        <div class="relative z-10 pb-8 bg-white">
             <Popover>
                 <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
                     <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
-                    <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
+                    <div class="flex items-center flex-grow flex-shrink-0">
                         <div class="flex items-center justify-between w-full md:w-auto">
                         <a href="#">
                             <span class="sr-only">Logo</span>

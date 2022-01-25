@@ -40,6 +40,23 @@
                 </jet-button>
             </div>
         </form>
+        <div>
+            <a type="button" href="google/auth">
+                <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full">
+                    <font-awesome-icon :icon="googleIcon" />
+                </button>
+            </a>
+            <a type="button" href="linkedin/auth">
+                <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full">
+                    <font-awesome-icon :icon="linkedInIcon" />
+                </button>
+            </a>
+            <a type="button" href="github/auth">
+                <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full">
+                    <font-awesome-icon :icon="githubIcon" />
+                </button>
+            </a>
+        </div>
     </jet-authentication-card>
 </template>
 
@@ -53,6 +70,12 @@
     import JetLabel from '@/Jetstream/Label.vue'
     import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+    import { 
+        faLinkedin,
+        faGithub,
+        faGoogle
+    } from '@fortawesome/free-brands-svg-icons';
 
     export default defineComponent({
         components: {
@@ -65,6 +88,7 @@
             JetLabel,
             JetValidationErrors,
             Link,
+            FontAwesomeIcon
         },
 
         props: {
@@ -78,7 +102,10 @@
                     email: '',
                     password: '',
                     remember: false
-                })
+                }),
+                linkedInIcon: faLinkedin,
+                googleIcon: faGoogle,
+                githubIcon: faGithub
             }
         },
 
