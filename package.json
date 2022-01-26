@@ -27,6 +27,8 @@
     },
     "dependencies": {
         "@headlessui/vue": "^1.4.3",
-        "@heroicons/vue": "^1.0.5"
+        "@heroicons/vue": "^1.0.5",
+        "browser-sync": "^2.27.7",
+        "browser-sync-webpack-plugin": "^2.3.0"
     }
 }
