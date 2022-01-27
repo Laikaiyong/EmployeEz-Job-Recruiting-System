@@ -28,6 +28,7 @@ Route::get('/', function () {
     ]);
 });
 
+// Socialite Login
 Route::prefix('google')->name('google.')->group( function(){
     Route::get('/auth', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('login');
     Route::any('/auth/callback', [GoogleSocialiteController::class, 'handleCallback'])->name('callback');
@@ -43,6 +44,17 @@ Route::prefix('github')->name('github.')->group( function(){
     Route::any('/auth/callback', [GithubSocialiteController::class, 'handleCallback'])->name('callback');
 });
 
+// Admin Deshboard View
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+
+// Job Seeker Main Page
+Route::get('/home/username', function () {
+    return Inertia::render('JobSeekHome');
+});
+
+// Recruiter Main Page
+Route::get('/home/companyname', function () {
+    return Inertia::render('RecruitHome');
+});
