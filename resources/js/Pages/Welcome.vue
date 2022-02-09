@@ -1,18 +1,18 @@
 <template>
     <div class="relative bg-white overflow-hidden">
-        <welcome-banner canLogin=canLogin canRegister=canRegister />
+        <page-header canLogin=canLogin canRegister=canRegister />
         <welcome-main />
     </div>
 </template>
 
 <script>
     import { defineComponent } from 'vue';
-    import WelcomeBanner from '@/Jetstream/LandingPage/WelcomeBanner.vue';
-    import WelcomeMain from '@/Jetstream/LandingPage/WelcomeMain.vue';
+    import PageHeader from '@/Components/PageHeader.vue';
+    import WelcomeMain from '@/Components/LandingPage/WelcomeMain.vue';
 
     export default defineComponent({
         components: {
-            WelcomeBanner,
+            PageHeader,
             WelcomeMain
         },
 
