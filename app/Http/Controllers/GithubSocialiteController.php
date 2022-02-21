@@ -45,7 +45,8 @@ class GithubSocialiteController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'github_id'=> $user->id,
-                    'password' => encrypt('github')
+                    'password' => encrypt('github'),
+                    'online'=> true,
                 ]);
 
                 Auth::login($newUser);

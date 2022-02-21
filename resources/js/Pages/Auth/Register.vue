@@ -6,13 +6,13 @@
 <script>
     import { defineComponent } from 'vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
-    import  RegisterMain  from '@/Jetstream/SignUpPage/RegisterMain.vue'
+    import RegisterMain from '@/Components/SignUpPage/RegisterMain.vue'
 
     export default defineComponent({
         components: {
             Head,
             RegisterMain,
-            Link,
-        },
+            Link
+        }
     })
 </script>

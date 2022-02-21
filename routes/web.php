@@ -8,6 +8,7 @@ use App\Http\Controllers\LinkedinSocialiteController;
 use App\Http\Controllers\GoogleSocialiteController;
 use App\Http\Controllers\GithubSocialiteController;
 
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,11 +51,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 // Job Seeker Main Page
-Route::get('/home/username', function () {
-    return Inertia::render('JobSeekHome');
-});
+Route::middleware(['auth:sanctum', 'verified'])->get('/home', function (User $user) {
+    return Inertia::render('UserHome');
+})->name('home');
 
-// Recruiter Main Page
-Route::get('/home/companyname', function () {
-    return Inertia::render('RecruitHome');
+// Recruiter Profile
+Route::get('/company', function () {
+    return Inertia::render('Company');
 });
