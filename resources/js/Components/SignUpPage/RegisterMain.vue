@@ -138,7 +138,6 @@
     
     export default defineComponent({
         components: {
-            Head,
             JetAuthenticationCard,
             JetAuthenticationCardLogo,
             JetButton,
