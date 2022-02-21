@@ -27219,6 +27219,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Label_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/Label.vue */ "./resources/js/Jetstream/Label.vue");
 /* harmony import */ var _Jetstream_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Jetstream/ValidationErrors.vue */ "./resources/js/Jetstream/ValidationErrors.vue");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @fortawesome/vue-fontawesome */ "./node_modules/@fortawesome/vue-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @fortawesome/free-brands-svg-icons */ "./node_modules/@fortawesome/free-brands-svg-icons/index.es.js");
+
+
 
 
 
@@ -27237,6 +27241,7 @@ __webpack_require__.r(__webpack_exports__);
     JetCheckbox: _Jetstream_Checkbox_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
     JetLabel: _Jetstream_Label_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
     JetValidationErrors: _Jetstream_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
+    FontAwesomeIcon: _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_9__.FontAwesomeIcon,
     Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_8__.Link
   },
   data: function data() {
@@ -27247,7 +27252,10 @@ __webpack_require__.r(__webpack_exports__);
         password: '',
         password_confirmation: '',
         terms: false
-      })
+      }),
+      linkedInIcon: _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_10__.faLinkedin,
+      googleIcon: _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_10__.faGoogle,
+      githubIcon: _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_10__.faGithub
     };
   },
   methods: {
@@ -27324,9 +27332,22 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     AuthenticationCardLogo: _Jetstream_AuthenticationCardLogo_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  data: function data() {
+    return {
+      position: 'job seeker'
+    };
+  },
   props: {
     svg: String,
     text: String
+  },
+  methods: {
+    toggleJobSeekerButton: function toggleJobSeekerButton() {
+      if (this.position === 'recruiter') this.position = 'job seeker';
+    },
+    toggleRecruiterButton: function toggleRecruiterButton() {
+      if (this.position === 'job seeker') this.position = 'recruiter';
+    }
   }
 });
 
@@ -30349,7 +30370,7 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 
 var _hoisted_15 = ["href"];
 var _hoisted_16 = {
-  "class": "mt-6 flex justify-end mb-6"
+  "class": "mt-6 flex justify-center sm:justify-end mb-6"
 };
 
 var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Sign Up ");
@@ -30362,6 +30383,38 @@ var _hoisted_18 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
+var _hoisted_19 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+    "class": "text-center text-blue-900 font-black"
+  }, "Sign up with", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_20 = {
+  "class": "social-auth flex justify-center mt-4"
+};
+var _hoisted_21 = {
+  type: "button",
+  href: "google/auth"
+};
+var _hoisted_22 = {
+  "class": "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full"
+};
+var _hoisted_23 = {
+  type: "button",
+  href: "linkedin/auth"
+};
+var _hoisted_24 = {
+  "class": "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full"
+};
+var _hoisted_25 = {
+  type: "button",
+  href: "github/auth"
+};
+var _hoisted_26 = {
+  "class": "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_authentication_card_logo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-authentication-card-logo");
 
@@ -30376,6 +30429,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_checkbox = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-checkbox");
 
   var _component_jet_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-button");
+
+  var _component_font_awesome_icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("font-awesome-icon");
 
   var _component_jet_authentication_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-authentication-card");
 
@@ -30500,7 +30555,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"flex items-center justify-start mt-4\">\r\n            <input type=\"checkbox\" class=\"form-checkbox mr-3\" />\r\n            <span>I agree to the Terms and Conditions.</span>\r\n        </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
+      })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"flex items-center justify-start mt-4\">\r\n                <input type=\"checkbox\" class=\"form-checkbox mr-3\" />\r\n                <span>I agree to the Terms and Conditions.</span>\r\n            </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["ml-0 rounded-3xl px-16 py-4", {
           'opacity-25': _ctx.form.processing
         }]),
@@ -30514,7 +30569,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }, 8
       /* PROPS */
-      , ["class", "disabled"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Linebreak "), _hoisted_18], 32
+      , ["class", "disabled"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Linebreak "), _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Social Auth "), _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_font_awesome_icon, {
+        icon: _ctx.googleIcon
+      }, null, 8
+      /* PROPS */
+      , ["icon"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_font_awesome_icon, {
+        icon: _ctx.linkedInIcon
+      }, null, 8
+      /* PROPS */
+      , ["icon"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_font_awesome_icon, {
+        icon: _ctx.githubIcon
+      }, null, 8
+      /* PROPS */
+      , ["icon"])])])])], 32
       /* HYDRATE_EVENTS */
       )];
     }),
@@ -30702,7 +30769,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "min-h-screen flex flex-col sm:flex-row justify-center items-center pt-6 sm:pt-0"
+  "class": "min-h-screen flex flex-row flex-wrap justify-center items-center"
 };
 var _hoisted_2 = {
   "class": "w-5/6 sm:max-w-lg mr-0 sm:mr-4"
@@ -30710,15 +30777,34 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   "class": "w-5/6 sm:max-w-lg mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"
 };
+var _hoisted_4 = {
+  "class": "flex flex-row justify-around mb-3"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_authentication_card_logo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("authentication-card-logo");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Left SVG "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_authentication_card_logo, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" SVG "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_authentication_card_logo, {
     svg: $props.svg,
     text: $props.text
   }, null, 8
   /* PROPS */
-  , ["svg", "text"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" SignUp / Login Form "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])]);
+  , ["svg", "text"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" SignUp / Login Form "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Switch Tabs "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)($data.position === 'job seeker' ? 'border-b-4 border-black-900 font-bold py-2 px-4' : 'font-bold py-2 px-4'),
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $options.toggleJobSeekerButton && $options.toggleJobSeekerButton.apply($options, arguments);
+    })
+  }, " Job Seeker ", 2
+  /* CLASS */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)($data.position === 'recruiter' ? 'border-b-4 border-black-900 font-bold py-2 px-4' : 'font-bold py-2 px-4'),
+    onClick: _cache[1] || (_cache[1] = function () {
+      return $options.toggleRecruiterButton && $options.toggleRecruiterButton.apply($options, arguments);
+    })
+  }, " Recruiter ", 2
+  /* CLASS */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" The login/signup form "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])]);
 }
 
 /***/ }),
@@ -30751,7 +30837,7 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_3 = {
-  "class": "w-2/3 font-black text-2xl text-blue-900 my-5"
+  "class": "w-2/3 font-black text-2xl text-blue-900 my-5 mt-8"
 };
 var _hoisted_4 = ["src"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -30760,7 +30846,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: _ctx.svg,
     alt: "A SVG Logo",
-    "class": "pr-8"
+    "class": "pr-8 mt-8"
   }, null, 8
   /* PROPS */
   , _hoisted_4)]);
@@ -49556,7 +49642,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* The line break below sign up form*/\nh2[data-v-87e1b46e] {\r\n    width: 100%;\r\n    text-align: center;\r\n    border-bottom: 1px solid rgba(47, 46, 65, .27);\r\n    line-height: 0.1em;\r\n    margin: 10px 0 20px;\n}\nh2 .linebreak[data-v-87e1b46e] {\r\n    background: #fff;\r\n    padding: 0 10px;\r\n    color: rgba(47, 46, 65, .27);\n}\nul > li[data-v-87e1b46e], img[data-v-87e1b46e] {\r\n    display: inline;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* The line break below sign up form*/\nh2[data-v-87e1b46e] {\r\n    width: 100%;\r\n    text-align: center;\r\n    border-bottom: 1px solid rgba(47, 46, 65, .27);\r\n    line-height: 0.1em;\r\n    margin: 10px 0 20px;\n}\nh2 .linebreak[data-v-87e1b46e] {\r\n    background: #fff;\r\n    padding: 0 10px;\r\n    color: rgba(47, 46, 65, .27);\n}\n.social-auth a[data-v-87e1b46e] {\r\n    padding : 0px 5px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
