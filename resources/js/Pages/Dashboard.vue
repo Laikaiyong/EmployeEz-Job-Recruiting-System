@@ -25,6 +25,6 @@
         components: {
             AppLayout,
             Welcome,
-        },
+        }
     })
 </script>

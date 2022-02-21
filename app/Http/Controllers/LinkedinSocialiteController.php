@@ -45,7 +45,8 @@ class LinkedinSocialiteController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'linkedin_id'=> $user->id,
-                    'password' => encrypt('linkedin')
+                    'password' => encrypt('linkedin'),
+                    'online' => true
                 ]);
 
                 Auth::login($newUser);

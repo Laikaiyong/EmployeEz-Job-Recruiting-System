@@ -33,7 +33,10 @@
         "@fortawesome/vue-fontawesome": "^3.0.0-5",
         "@headlessui/vue": "^1.4.3",
         "@heroicons/vue": "^1.0.5",
+        "@j-t-mcc/vue3-chartjs": "^1.2.0",
         "browser-sync": "^2.27.7",
-        "browser-sync-webpack-plugin": "^2.3.0"
+        "browser-sync-webpack-plugin": "^0.1.0",
+        "chart.js": "^3.7.0",
+        "vue3-google-map": "^0.8.3"
     }
 }

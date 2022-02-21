@@ -34,8 +34,9 @@ class CreateNewUser implements CreatesNewUsers
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
+                'online' => true
             ]), function (User $user) {
-                $this->createTeam($user);
+                $this->setTeam($user);
             });
         });
     }
@@ -53,5 +54,18 @@ class CreateNewUser implements CreatesNewUsers
             'name' => explode(' ', $user->name, 2)[0]."'s Team",
             'personal_team' => true,
         ]));
+    }
+
+    /**
+     * Set user to respective team
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    protected function setTeam(User $user)
+    {
+        $team = Team::where('id', 3)->first();
+        $user->teams()->attach($team);
+        $user->switchTeam($team);
     }
 }
