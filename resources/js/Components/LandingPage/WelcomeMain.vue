@@ -33,7 +33,9 @@
     </main>
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
         <div class="h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full" id="main-img-bg">
-            <img src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/Job_hunt_re_q203.svg" height="500px"  width="500px" alt="">
+            <img src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/Job_hunt_re_q203.svg" 
+            class="w-5/6 h-5/6 px-8 pt-8"
+            alt="">
         </div>
     </div>
 </template>
@@ -56,7 +58,7 @@ export default {
         }
     },
     components: {
-        FontAwesomeIcon
+        FontAwesomeIcon,
     }
 }
 </script>
@@ -64,6 +66,6 @@ export default {
 <style scoped>
 #main-img-bg {
     background: linear-gradient(180deg, #ECF2FF 0%, rgba(255, 182, 182, 0.18) 100%);
-    border-radius: 30px;
+    border-radius: 30px 0px 0px 30px;
 }
 </style>
