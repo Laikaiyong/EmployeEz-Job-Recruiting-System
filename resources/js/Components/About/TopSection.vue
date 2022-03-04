@@ -1,5 +1,4 @@
 <template>
-  <template v-if="teamId == 3">
   <div>
         <h1 class="text-center font-semibold text-xl sm:text-3xl lg:text-4xl">
           We make job seeking easy
@@ -25,12 +24,10 @@
         </div>
     </div>
   </div>
-  </template>
 </template>
 
 <script>
 export default {
-  props: ['teamId']
 }
 </script>
 

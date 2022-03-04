@@ -31,11 +31,11 @@
         </button>
         </div>
     </main>
-    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+    <!-- <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
         <div class="h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full" id="main-img-bg">
             <img src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/Job_hunt_re_q203.svg" height="500px"  width="500px" alt="">
         </div>
-    </div>
+    </div> -->
 </template>
 
 <script>

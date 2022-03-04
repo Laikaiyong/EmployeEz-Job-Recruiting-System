@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserOnlineStatus extends Migration
+class CreateTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddUserOnlineStatus extends Migration
      */
     public function up()
     {
-        Schema::table('users', function ($table) {
-            $table->boolean('online');
+        Schema::create('tasks', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +26,6 @@ class AddUserOnlineStatus extends Migration
      */
     public function down()
     {
-        Schema::table('users', function ($table) {
-            $table->dropColumn('online');
-         });
+        Schema::dropIfExists('tasks');
     }
 }
