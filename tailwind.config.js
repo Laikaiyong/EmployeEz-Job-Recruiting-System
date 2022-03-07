@@ -13,6 +13,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+                architect: ['Architects Daughter']
             },
         },
     },

@@ -29,9 +29,15 @@ class User extends Authenticatable
         'name', 
         'email', 
         'password',
-        'linkedin_id',
-        'github_id',
-        'google_id'
+        'online',
+        'type',
+        'description',
+        'url',
+        'address',
+        'city',
+        'state',
+        'latitude',
+        'longitude'
     ];
 
     /**

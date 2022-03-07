@@ -50,7 +50,7 @@ export default {
     return {
       cards,
     }
-  },
+  }
 }
 </script>
 

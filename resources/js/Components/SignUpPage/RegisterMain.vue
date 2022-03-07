@@ -75,7 +75,6 @@
                     </div>
                 </jet-label>
             </div>
-
             <!-- <div class="flex items-center justify-start mt-4">
                 <input type="checkbox" class="form-checkbox mr-3" />
                 <span>I agree to the Terms and Conditions.</span>
@@ -89,7 +88,7 @@
                     Sign Up
                 </jet-button>
             </div>
-
+        </form>
             <!-- Linebreak -->
             <h2>
                 <span class="linebreak">or</span>
@@ -114,7 +113,6 @@
                     </button>
                 </a>
             </div>
-        </form>
         
     </jet-authentication-card>
 </template>
@@ -138,7 +136,6 @@
     
     export default defineComponent({
         components: {
-            Head,
             JetAuthenticationCard,
             JetAuthenticationCardLogo,
             JetButton,
@@ -152,6 +149,7 @@
         data() {
             return {
                 form: this.$inertia.form({
+                    role: '',
                     name: '',
                     email: '',
                     password: '',

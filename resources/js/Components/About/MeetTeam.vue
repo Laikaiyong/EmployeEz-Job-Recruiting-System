@@ -59,6 +59,7 @@ export default {
       members,
     }
   },
+  props: ['teamId']
 }
 </script>
 

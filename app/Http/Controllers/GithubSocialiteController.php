@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Models\Team;
 use Illuminate\Support\Facades\Auth;
 use Exception;
 use Laravel\Socialite\Facades\Socialite;
@@ -45,8 +46,12 @@ class GithubSocialiteController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'github_id'=> $user->id,
-                    'password' => encrypt('github')
+                    'password' => encrypt('github'),
+                    'online'=> true,
                 ]);
+                $team = Team::where('id', 3)->first();
+                $newUser->teams()->attach($team);
+                $newUser->switchTeam($team);
 
                 Auth::login($newUser);
 
