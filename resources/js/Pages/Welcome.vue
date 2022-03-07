@@ -5,6 +5,11 @@
     </div>
     <welcome-testimonial />
     <more-info />
+    <find-job />
+    <find-employer />
+    <enquiry-section />
+    <get-started />
+    <page-footer />
 </template>
 
 <script>
@@ -13,12 +18,22 @@
     import WelcomeMain from '@/Components/LandingPage/WelcomeMain.vue';
     import WelcomeTestimonial from '@/Components/LandingPage/Testimonial.vue';
     import MoreInfo from '@/Components/LandingPage/MoreInfo.vue';
+    import FindJob from '@/Components/LandingPage/FindJob.vue';
+    import FindEmployer from '@/Components/LandingPage/Employers.vue';
+    import EnquirySection from '@/Components/LandingPage/EnquirySection.vue'
+    import GetStarted from '@/Components/LandingPage/GetStarted.vue';
+    import PageFooter from '@/Components/PageFooter.vue';
     export default defineComponent({
         components: {
             PageHeader,
             WelcomeMain,
             WelcomeTestimonial,
-            MoreInfo
+            MoreInfo,
+            FindJob,
+            FindEmployer,
+            EnquirySection,
+            GetStarted,
+            PageFooter
         },
 
         props: {

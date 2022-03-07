@@ -8,17 +8,38 @@
         </template>
         <jet-validation-errors class="mb-4" />
 
-        <!-- Content in SignUp Form -->
-        <form @submit.prevent="submit" >
-            <!-- SignUp Header -->
-            <div class="mb-4">
-                <h1 class="text-3xl text-blue-900 font-black mb-2">Sign Up</h1>
-                <span class="text-sm text-blue-900 font-medium">Already have an account?</span>
-                <Link :href="route('login')" class="font-bold text-sm text-red-400 hover:text-gray-900 pl-2">
-                    Log in here
-                </Link>
+        <!-- Switch Tabs -->
+        <div class="flex flex-row justify-around mb-3">  
+            <div>
+                <button 
+                type="button" 
+                :class="isJobSeeker ? 'border-b-4 border-black-900 font-bold py-2 px-4' : 'transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:border-b-2 hover:border-black-700 font-bold py-2 px-4'"
+                @click="toggleJobSeekerButton">
+                    Job Seeker
+                </button>
             </div>
+        
+            <div>
+                <button 
+                type="button"
+                :class="!isJobSeeker ? 'border-b-4 border-black-900 font-bold py-2 px-4' : 'transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:border-b-2 hover:border-black-700 font-bold py-2 px-4'"
+                @click="toggleJobSeekerButton">
+                    Recruiter
+                </button>
+            </div>
+        </div>
 
+        <!-- SignUp Header -->
+        <div class="mb-4">
+            <h1 class="text-3xl text-blue-900 font-black mb-2">Sign Up</h1>
+            <span class="text-sm text-blue-900 font-medium">Already have an account?</span>
+            <Link :href="route('login')" class="font-bold text-sm text-red-400 hover:text-gray-900 pl-2">
+                Log in here
+            </Link>
+        </div>
+
+        <!-- Content in SignUp Form for Job Seeker -->
+        <form @submit.prevent="submit" v-show="isJobSeeker">
             <!-- Form Input -->
             <div class="mt-4">
                 <jet-label for="name" value="Name" />
@@ -90,32 +111,102 @@
                 </jet-button>
             </div>
 
-            <!-- Linebreak -->
-            <h2>
-                <span class="linebreak">or</span>
-            </h2>
-
             <!-- Social Auth -->
-            <p class="text-center text-blue-900 font-black">Sign up with</p>
-            <div class="social-auth flex justify-center mt-4">
-                <a type="button" href="google/auth">
-                    <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full">
-                        <font-awesome-icon :icon="googleIcon" />
-                    </button>
-                </a>
-                <a type="button" href="linkedin/auth">
-                    <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full">
-                        <font-awesome-icon :icon="linkedInIcon" />
-                    </button>
-                </a>
-                <a type="button" href="github/auth">
-                    <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full">
-                        <font-awesome-icon :icon="githubIcon" />
-                    </button>
-                </a>
-            </div>
+            <div>
+                <!-- Linebreak -->
+                <h2>
+                    <span class="linebreak">or</span>
+                </h2>
+
+                <p class="text-center text-blue-900 font-black">Sign up with</p>
+                <div class="social-auth flex justify-center mt-4">
+                    <a type="button" href="google/auth">
+                        <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full">
+                            <font-awesome-icon :icon="googleIcon" />
+                        </button>
+                    </a>
+                    <a type="button" href="linkedin/auth">
+                        <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full">
+                            <font-awesome-icon :icon="linkedInIcon" />
+                        </button>
+                    </a>
+                    <a type="button" href="github/auth">
+                        <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full">
+                            <font-awesome-icon :icon="githubIcon" />
+                        </button>
+                    </a>
+                </div>
+            </div>       
         </form>
-        
+
+        <!-- Content in Sign Up Form for Recruiters -->
+        <form @submit.prevent="submit" v-show="!isJobSeeker">
+            <!-- Form Input -->
+            <div class="mt-4">
+                <jet-label for="name" value="Company Name" />
+                <jet-input 
+                id="name" 
+                type="text" 
+                class="mt-1 block w-full rounded-xl text-sm" 
+                v-model="form.name" 
+                required autofocus autocomplete="name" 
+                placeholder="Enter your company name" />
+            </div>
+
+            <div class="mt-4">
+                <jet-label for="email" value="Company Email" />
+                <jet-input 
+                id="email" 
+                type="email" 
+                class="mt-1 block w-full rounded-xl text-sm" 
+                v-model="form.email" 
+                required placeholder="Enter your company email"/>
+            </div>
+
+            <div class="mt-4">
+                <jet-label for="password" value="Password" />
+                <jet-input 
+                id="password" 
+                type="password" 
+                class="mt-1 block w-full rounded-xl text-sm" 
+                v-model="form.password" 
+                required autocomplete="new-password" 
+                placeholder="Enter your password"/>
+            </div>
+
+            <div class="mt-4">
+                <jet-label for="password_confirmation" value="Confirm Password" />
+                <jet-input 
+                id="password_confirmation" 
+                type="password" 
+                class="mt-1 block w-full rounded-xl text-sm" 
+                v-model="form.password_confirmation" 
+                required autocomplete="new-password" 
+                placeholder="Enter your confirm password"/>
+            </div>
+
+            <!-- Agreement of T&C -->
+            <div class="flex items-center justify-start mt-4" v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
+                <jet-label for="terms">
+                    <div class="flex items-center">
+                        <jet-checkbox class="form-checkbox mr-3" name="terms" id="terms" v-model:checked="form.terms" />
+
+                        <div class="ml-2">
+                            I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
+                        </div>
+                    </div>
+                </jet-label>
+            </div>
+
+            <div class="mt-6 flex justify-center sm:justify-end mb-6">
+                <jet-button 
+                class="ml-0 rounded-3xl px-16 py-4" 
+                :class="{ 'opacity-25': form.processing }" 
+                :disabled="form.processing">
+                    Sign Up
+                </jet-button>
+            </div> 
+        </form>
     </jet-authentication-card>
 </template>
 
@@ -157,6 +248,7 @@
                     password_confirmation: '',
                     terms: false,
                 }),
+                isJobSeeker: true,
                 linkedInIcon: faLinkedin,
                 googleIcon: faGoogle,
                 githubIcon: faGithub
@@ -167,6 +259,10 @@
                 this.form.post(this.route('register'), {
                     onFinish: () => this.form.reset('password', 'password_confirmation'),
                 })
+            },
+
+            toggleJobSeekerButton() {
+                this.isJobSeeker = !this.isJobSeeker;
             },
         }
     })
@@ -189,4 +285,4 @@ h2 .linebreak {
 .social-auth a {
     padding : 0px 5px;
 }
-</style> 
+</style>
