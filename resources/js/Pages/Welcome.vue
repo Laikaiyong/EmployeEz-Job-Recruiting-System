@@ -14,7 +14,7 @@
 
 <script>
     import { defineComponent } from 'vue';
-    import PageHeader from '@/Components/PageHeader.vue';
+    import PageHeader from '@/Components/UnauthHeader.vue';
     import WelcomeMain from '@/Components/LandingPage/WelcomeMain.vue';
     import WelcomeTestimonial from '@/Components/LandingPage/Testimonial.vue';
     import MoreInfo from '@/Components/LandingPage/MoreInfo.vue';

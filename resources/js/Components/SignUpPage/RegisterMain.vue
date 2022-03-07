@@ -96,7 +96,6 @@
                     </div>
                 </jet-label>
             </div>
-
             <!-- <div class="flex items-center justify-start mt-4">
                 <input type="checkbox" class="form-checkbox mr-3" />
                 <span>I agree to the Terms and Conditions.</span>
@@ -110,6 +109,11 @@
                     Sign Up
                 </jet-button>
             </div>
+        </form>
+            <!-- Linebreak -->
+            <h2>
+                <span class="linebreak">or</span>
+            </h2>
 
             <!-- Social Auth -->
             <div>
@@ -137,7 +141,6 @@
                     </a>
                 </div>
             </div>       
-        </form>
 
         <!-- Content in Sign Up Form for Recruiters -->
         <form @submit.prevent="submit" v-show="!isJobSeeker">
@@ -242,6 +245,7 @@
         data() {
             return {
                 form: this.$inertia.form({
+                    role: '',
                     name: '',
                     email: '',
                     password: '',
