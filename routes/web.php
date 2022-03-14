@@ -76,7 +76,7 @@ Route::get('/jobs/{id}', function($id){
     return Inertia::render('JobProfile', [
         'selectedJob' => JobPost::where('id', $id)->first()
     ]);
-});
+})->where(['id' => '[0-9]+']);
 
 
 Route::get('/user/{id}/{name}', function($id, $name){
@@ -86,7 +86,7 @@ Route::get('/user/{id}/{name}', function($id, $name){
                             ->where('name', $name)
                             ->get(),
     ]);
-});
+})->where(['id' => '[0-9]+', 'name' => '[A-Za-z]+']);;
 
 Route::get('/company', function () {
     return Inertia::render('Company', [
