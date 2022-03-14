@@ -17,9 +17,12 @@ class CreateJobPostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->text('requirement');
+            $table->json('requirement');
             $table->string('allowance');
             $table->string('duration');
+            $table->string('experience_level');
+            $table->string('type');
+            $table->string('location');
             $table->foreignId('user_id');
             $table->timestamps();
         });

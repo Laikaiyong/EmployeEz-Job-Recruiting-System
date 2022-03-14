@@ -11,6 +11,7 @@ use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\ApplicationController;
 
 use App\Models\User;
+use App\Models\JobPost;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,9 +26,7 @@ use App\Models\User;
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+        'canRegister' => Route::has('register')
     ]);
 });
 
@@ -59,15 +58,58 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-// Job Seeker Main Page
-Route::middleware(['auth:sanctum', 'verified'])->get('/home', function (User $user) {
-    return Inertia::render('UserHome');
+Route::get('/home', function () {
+    return Inertia::render('UserHome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register')
+    ]);
 })->name('home');
 
-// Recruiter Profile
+Route::get('/jobs', function () {
+    return Inertia::render('Jobs', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register')
+    ]);
+})->name('jobs');
+
+Route::get('/jobs/{id}', function($id){
+    return Inertia::render('JobProfile', [
+        'selectedJob' => JobPost::where('id', $id)->first()
+    ]);
+});
+
+
+Route::get('/user/{id}/{name}', function($id, $name){
+    return Inertia::render('UserProfile', [
+        'selectedUser' => User::select("*")
+                            ->where('id', $id)
+                            ->where('name', $name)
+                            ->get(),
+    ]);
+});
+
 Route::get('/company', function () {
-    return Inertia::render('Company');
+    return Inertia::render('Company', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register')
+    ]);
+})->name('company');
+
+// Recruiter Profile
+Route::get('/company/profile', function () {
+    return Inertia::render('CompanyProfile');
 });
 
 Route::resource('jobposts', JobPostingController::class);
 Route::resource('application', ApplicationController::class);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/add', function () {
+    return Inertia::render('JobsAdd');
+});
+
+Route::fallback(function() {
+    return Inertia::render('404Error', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register')
+    ]);
+});

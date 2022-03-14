@@ -10,19 +10,19 @@
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('home')">
+                                <Link :href="baseUrl">
                                     <img class="h-8 w-auto sm:h-10" src="/img/EmployeEz.png" />
                                 </Link>
                             </div>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                              <jet-nav-link :href="route('home')" :active="route().current('home')">
-                                      Home
+                            <jet-nav-link :href="route('jobs')" :active="route().current('jobs')">
+                                      Job
                               </jet-nav-link>
-                            </div>
-
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                              <jet-nav-link :href="route('company')" :active="route().current('company')">
+                                      Company
+                              </jet-nav-link>
                               <jet-nav-link :href="route('aboutus')" :active="route().current('aboutus')">
                                       About
                               </jet-nav-link>
@@ -65,8 +65,13 @@
             <!-- Responsive Navigation Menu -->
             <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                 <div class="pt-1 pb-3 space-y-1">
-                    <jet-responsive-nav-link :href="route('home')" :active="route().current('home')">
-                        Home
+                    <jet-responsive-nav-link :href="route('jobs')" :active="route().current('jobs')">
+                        Job
+                    </jet-responsive-nav-link>
+                </div>
+                <div class="pt-1 pb-3 space-y-1">
+                    <jet-responsive-nav-link :href="route('company')" :active="route().current('company')">
+                        Company
                     </jet-responsive-nav-link>
                 </div>
                 <div class="pt-1 pb-3 space-y-1">
@@ -102,6 +107,8 @@
     import JetNavLink from '@/Jetstream/NavLink.vue'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink.vue'
 
+    var baseUrl = window.location.origin;
+
     export default defineComponent({
         components: {
             Link,
@@ -121,14 +128,13 @@
         data() {
             return {
                 showingNavigationDropdown: false,
+                baseUrl
             }
         },
 
         props: {
             canLogin: Boolean,
-            canRegister: Boolean,
-            laravelVersion: String,
-            phpVersion: String,
+            canRegister: Boolean
         }
     })
 </script>

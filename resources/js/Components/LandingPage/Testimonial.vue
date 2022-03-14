@@ -16,27 +16,45 @@
             <!-- Comment Box -->
             <div class="relative bg-blue-50 lg:w-2/3 h-auto my-8 p-4 rounded-lg">
                 <span class="text-lg font-extrabold"> {{ name }} </span>
-                <span class="absolute right-4"> {{ rating + " / 10"}} </span> 
+                <span class="absolute right-4">
+                    <font-awesome-icon class="text-xl" style="color:#FFE500" :icon="star" /> {{ rating + " / 10"}} 
+                </span> 
                 <p class="mt-4"> {{ "\"" + review + "\""}} </p>
             </div>
             <div class="lg:w-2/3 h-auto my-4 flex justify-between lg:justify-end">
-                <button class="px-4"><img src="" alt="Left Arrow"></button>
-                <button class="px-4"><img src="" alt="Right Arrow"></button>
+                <button class="px-4">
+                    <font-awesome-icon class="text-xl" :icon="arrowLeft" />
+                </button>
+                <button class="px-4">
+                    <font-awesome-icon class="text-xl" :icon="arrowRight" />
+                </button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            name: "Sierra Coldon",
-            rating: "10",
-            review: "EmployeEz has provided me a stable job! Definitely will recommend it to my family and friends!"
-        };
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+    import { 
+        faArrowCircleLeft,
+        faArrowCircleRight,
+        faStar
+    } from '@fortawesome/free-solid-svg-icons';
+    export default {
+        components: {
+            FontAwesomeIcon
+        },
+        data() {
+            return {
+                name: "Sierra Coldon",
+                rating: "10",
+                review: "EmployeEz has provided me a stable job! Definitely will recommend it to my family and friends!",
+                arrowLeft: faArrowCircleLeft,
+                arrowRight: faArrowCircleRight,
+                star: faStar
+            };
+        }
     }
-}
 </script>
 
 <style scoped>

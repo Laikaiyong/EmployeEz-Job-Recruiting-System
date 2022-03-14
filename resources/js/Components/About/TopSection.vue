@@ -1,5 +1,6 @@
 <template>
-  <div>
+<div>
+  <div class="mt-10">
         <h1 class="text-center font-semibold text-xl sm:text-3xl lg:text-4xl">
           We make job seeking easy
         </h1>
@@ -24,6 +25,7 @@
         </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
   <Head title="About Us"></Head>
-  <page-header v-if="$page.props.user"></page-header>
+  <page-header v-if="$page.props.user">></page-header>
   <unauth-header v-else canLogin=canLogin canRegister=canRegister></unauth-header>
   <top-section></top-section>
   <values-section></values-section>
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import PageHeader from '@/Components/About/PageHeader.vue';
+import PageHeader from '@/Components/PageHeader.vue';
 import UnauthHeader from '@/Components/UnauthHeader.vue';
 import TopSection from '@/Components/About/TopSection.vue';
 import ValuesSection from '@/Components/About/ValuesSection.vue';
@@ -29,7 +29,7 @@ export default {
     },
     props: {
         canLogin: Boolean,
-        canRegister: Boolean,
+        canRegister: Boolean
     }
 }
 </script>

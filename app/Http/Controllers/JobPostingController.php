@@ -81,4 +81,9 @@ class JobPostingController extends Controller
             return Redirect::route('jobposts.index')->with('message', 'Data Deleted');
         }
     }
+
+    public function show(JobPost $id)
+    {
+        dd($id);
+    }
 }

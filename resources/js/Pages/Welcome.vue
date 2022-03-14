@@ -1,5 +1,7 @@
 <template>
-    <page-header canLogin=canLogin canRegister=canRegister />
+    <Head title="Home"></Head>
+    <page-header v-if="$page.props.user"></page-header>
+    <unauth-header v-else canLogin=canLogin canRegister=canRegister></unauth-header>
     <div class="relative bg-white">
         <welcome-main />
     </div>
@@ -14,7 +16,8 @@
 
 <script>
     import { defineComponent } from 'vue';
-    import PageHeader from '@/Components/UnauthHeader.vue';
+    import UnauthHeader from '@/Components/UnauthHeader.vue';
+    import PageHeader from '@/Components/PageHeader.vue';
     import WelcomeMain from '@/Components/LandingPage/WelcomeMain.vue';
     import WelcomeTestimonial from '@/Components/LandingPage/Testimonial.vue';
     import MoreInfo from '@/Components/LandingPage/MoreInfo.vue';
@@ -23,9 +26,11 @@
     import EnquirySection from '@/Components/LandingPage/EnquirySection.vue'
     import GetStarted from '@/Components/LandingPage/GetStarted.vue';
     import PageFooter from '@/Components/PageFooter.vue';
+    import { Head } from '@inertiajs/inertia-vue3';
     export default defineComponent({
         components: {
             PageHeader,
+            UnauthHeader,
             WelcomeMain,
             WelcomeTestimonial,
             MoreInfo,
@@ -33,14 +38,13 @@
             FindEmployer,
             EnquirySection,
             GetStarted,
-            PageFooter
+            PageFooter,
+            Head
         },
 
         props: {
             canLogin: Boolean,
-            canRegister: Boolean,
-            laravelVersion: String,
-            phpVersion: String,
+            canRegister: Boolean
         }
     })
 </script>

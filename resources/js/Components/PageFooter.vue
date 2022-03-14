@@ -12,22 +12,26 @@
           </a>
           <div class="flex justify-center mt-4">
             <a
-            href=""
+            target="_blank"
+            href="https://www.facebook.com/"
             class="text-2xl text-blue-600 hover:text-blue-800 fill-current">
               <font-awesome-icon :icon="facebookIcon" />
             </a>
             <a
-            href=""
+            target="_blank"
+            href="https://www.instagram.com/"
             class="ml-3 text-2xl text-pink-400 hover:text-pink-600 fill-current">
               <font-awesome-icon :icon="instaIcon" />
             </a>
             <a
-            href=""
+            target="_blank"
+            href="https://www.twitter.com/"
             class="ml-3 text-2xl text-blue-300 hover:text-blue-500 fill-current">
               <font-awesome-icon :icon="twitterIcon" />
             </a>
             <a
-            href=""
+            target="_blank"
+            href="https://www.linkedin.com/"
             class="ml-3 text-2xl text-blue-500 hover:text-blue-700 fill-current">
               <font-awesome-icon :icon="linkedInIcon" />
             </a>

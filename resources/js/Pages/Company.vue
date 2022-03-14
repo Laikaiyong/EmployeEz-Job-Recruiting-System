@@ -1,52 +1,33 @@
 <template>
-  <div style="max-width: 400px">
-    <vue3-chart-js v-bind="{ ...pieChart }" />
-  </div>
-  <GoogleMap
-  :api-key="apiKey"
-  style="width: 100%; height: 500px"
-  :center="center"
-  :zoom="15"
-  >
-    <Marker :options="{ position: center }" />
-  </GoogleMap>
+    <Head title="Company"></Head>
+    <page-header v-if="$page.props.user"></page-header>
+    <unauth-header v-else canLogin=canLogin canRegister=canRegister></unauth-header>
+    <company-main></company-main>
+    <page-footer></page-footer>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-import { GoogleMap, Marker } from 'vue3-google-map'
-import Vue3ChartJs from "@j-t-mcc/vue3-chartjs";
-
-export default defineComponent({
-  components: { 
-    GoogleMap, 
-    Marker,
-    Vue3ChartJs
-  },
-  setup() {
-    const pieChart = {
-      type: "pie",
-      data: {
-        labels: ["VueJs", "EmberJs", "ReactJs", "AngularJs"],
-        datasets: [
-          {
-            backgroundColor: ["#41B883", "#E46651", "#00D8FF", "#DD1B16"],
-            data: [40, 20, 80, 10],
-          },
-        ],
-      },
-    };
-    const center = { lat: 40.689247, lng: -74.044502 }
-    const apiKey = process.env.GOOGLE_MAP_KEY
-
-    return { 
-      center,
-      pieChart,
-      apiKey
-    }
-  },
-})
+    import { defineComponent } from 'vue';
+    import UnauthHeader from '@/Components/UnauthHeader.vue';
+    import PageHeader from '@/Components/PageHeader.vue';
+    import CompanyMain from '@/Components/Company/CompanyMain.vue';
+    import PageFooter from '@/Components/PageFooter.vue';
+    import { Head } from '@inertiajs/inertia-vue3';
+    export default defineComponent({
+        components: {
+            PageHeader,
+            UnauthHeader,
+            CompanyMain,
+            PageFooter,
+            Head
+        },
+        props: {
+            canLogin: Boolean,
+            canRegister: Boolean
+        }
+    })
 </script>
 
-<style scoped>
+<style>
+
 </style>

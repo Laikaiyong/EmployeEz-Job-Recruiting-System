@@ -38,8 +38,8 @@
         </div>
         <!-- Job Cards -->
         <div class="mt-4">
-            <div class="grid gap-y-10 lg:grid-cols-3 max-w-7xl mx-auto my-4 px-4">
-                <div class="w-3/4 h-full flex flex-col justify-center items-center place-self-center shadow-lg rounded-3xl" v-for="job in jobs">
+            <div class="grid gap-y-10 lg:grid-cols-3 md:grid-cols-2 max-w-7xl mx-auto my-4 px-4">
+                <div v-for="job in jobs" class="w-3/4 h-full flex flex-col justify-center items-center place-self-center shadow-lg rounded-3xl">
                     <!-- Company Banner -->
                     <img 
                     :src="job.company_banner" 

@@ -20,6 +20,9 @@ class JobPost extends Model
         'requirement',
         'allowance',
         'duration',
+        'type',
+        'location',
+        'experience_level',
         'user_id'
     ];
 }

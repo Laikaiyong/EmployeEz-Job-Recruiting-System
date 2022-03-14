@@ -12,8 +12,8 @@
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
-                                    <jet-application-mark class="block h-9 w-auto" />
+                                <Link :href="baseUrl">
+                                    <img class="h-8 w-auto sm:h-10" src="/img/EmployeEz.png" />
                                 </Link>
                             </div>
 

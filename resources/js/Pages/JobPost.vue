@@ -1,17 +1,7 @@
 <template>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Manage Post - (Laravel 8 Inertia JS CRUD with Jetstream & Tailwind CSS - ItSolutionStuff.com)
-            </h2>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4">
-                    <!-- <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md my-3" role="alert" v-if="$page.flash.message">
-                      <div class="flex">
-                        <div>
-                          <p class="text-sm">{{ $page.flash.message }}</p>
-                        </div>
-                      </div>
-                    </div> -->
                     <button @click="openModal()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">Create New Post</button>
                     <table class="table-fixed w-full">
                         <thead>
@@ -85,7 +75,7 @@
                                 Update
                               </button>
                             </span>
-                            <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
+                            <span class="ml-2 mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
                               
                               <button @click="closeModal()" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                                 Cancel
