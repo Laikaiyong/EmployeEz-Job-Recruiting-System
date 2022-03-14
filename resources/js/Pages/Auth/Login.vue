@@ -1,7 +1,9 @@
 <template>
     <Head title="Log in" />
 
-    <jet-authentication-card>
+    <jet-authentication-card
+    svg="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/multitasking_hqg3.svg"
+    text="Great to see you again!">
         <template #logo>
             <jet-authentication-card-logo />
         </template>
@@ -10,6 +12,15 @@
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
+        </div>
+
+        <!-- SignUp Header -->
+        <div class="mb-4">
+            <h1 class="text-3xl text-blue-900 font-black mb-2">Log In</h1>
+            <span class="text-sm text-blue-900 font-medium">Don't have an account?</span>
+            <Link :href="route('register')" class="font-bold text-sm text-red-400 hover:text-gray-900 pl-2">
+                Sign up here
+            </Link>
         </div>
 
         <form @submit.prevent="submit">
@@ -30,32 +41,43 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-between mt-6 mb-6">
                 <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
                     Forgot your password?
                 </Link>
 
-                <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <jet-button class="ml-4 rounded-3xl px-16 py-4" 
+                :class="{ 'opacity-25': form.processing }" 
+                :disabled="form.processing">
                     Log in
                 </jet-button>
             </div>
         </form>
+
+        <!-- Linebreak -->
+        <h2>
+            <span class="linebreak">or</span>
+        </h2>
+
         <div>
-            <a type="button" href="google/auth">
-                <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full">
-                    <font-awesome-icon :icon="googleIcon" />
-                </button>
-            </a>
-            <a type="button" href="linkedin/auth">
-                <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full">
-                    <font-awesome-icon :icon="linkedInIcon" />
-                </button>
-            </a>
-            <a type="button" href="github/auth">
-                <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full">
-                    <font-awesome-icon :icon="githubIcon" />
-                </button>
-            </a>
+            <p class="text-center text-blue-900 font-black">Log in with</p>
+            <div class="flex justify-center px-2 mt-4">
+                <a type="button" href="google/auth">
+                    <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 mx-1 rounded-full">
+                        <font-awesome-icon :icon="googleIcon" />
+                    </button>
+                </a>
+                <a type="button" href="linkedin/auth">
+                    <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 mx-1 rounded-full">
+                        <font-awesome-icon :icon="linkedInIcon" />
+                    </button>
+                </a>
+                <a type="button" href="github/auth">
+                    <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 mx-1 rounded-full">
+                        <font-awesome-icon :icon="githubIcon" />
+                    </button>
+                </a>
+            </div>
         </div>
     </jet-authentication-card>
 </template>
@@ -123,3 +145,18 @@
         }
     })
 </script>
+<style scoped>
+/* The line break below log in form*/
+h2 {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(47, 46, 65, .27);
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+h2 .linebreak {
+    background: #fff;
+    padding: 0 10px;
+    color: rgba(47, 46, 65, .27);
+}
+</style>
