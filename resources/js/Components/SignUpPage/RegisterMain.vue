@@ -9,7 +9,7 @@
         <jet-validation-errors class="mb-4" />
 
         <!-- Switch Tabs -->
-        <div class="flex flex-row justify-around mb-3">  
+        <!-- <div class="flex flex-row justify-around mb-3">  
             <div>
                 <button 
                 type="button" 
@@ -27,10 +27,30 @@
                     Recruiter
                 </button>
             </div>
+        </div> -->
+
+        <!-- Select role form -->
+        <div class="text-center" v-show="role === ''">
+            <h1 class="text-3xl font-bold mt-4 mb-6">Who are you registering as?</h1>
+            <div class="flex flex-col justify-center items-center mt-6 mb-4">
+                <button 
+                class="bg-blue-800 hover:bg-blue-900 rounded-lg shadow-md text-xl text-white font-bold w-2/3 px-4 py-4 mb-4"
+                @click="
+                    this.role = 'Job Seeker'; 
+                    this.isRecruiter = false
+                ">Job Seeker</button>
+                
+                <button 
+                class="bg-blue-800 hover:bg-blue-900 rounded-lg shadow-md text-xl text-white font-bold w-2/3 px-4 py-4 mt-4"
+                @click="
+                    this.role = 'Recruiter'; 
+                    this.isRecruiter = true
+                ">Recruiter</button>
+            </div>
         </div>
 
         <!-- SignUp Header -->
-        <div class="mb-4">
+        <div class="mb-4" v-show="role != ''">
             <h1 class="text-3xl text-blue-900 font-black mb-2">Sign Up</h1>
             <span class="text-sm text-blue-900 font-medium">Already have an account?</span>
             <Link :href="route('login')" class="font-bold text-sm text-red-400 hover:text-gray-900 pl-2">
@@ -39,77 +59,85 @@
         </div>
 
         <!-- Content in SignUp Form for Job Seeker -->
-        <form @submit.prevent="submit" v-show="isJobSeeker">
-            <!-- Form Input -->
-            <div class="mt-4">
-                <jet-label for="name" value="Name" />
-                <jet-input 
-                id="name" 
-                type="text" 
-                class="mt-1 block w-full rounded-xl text-sm" 
-                v-model="form.name" 
-                required autofocus autocomplete="name" 
-                placeholder="Enter your name" />
-            </div>
+        <div v-show="role === 'Job Seeker'">
+            <form @submit.prevent="submit">
+                <!-- Form Input -->
+                <div class="mt-4">
+                    <jet-label for="name" value="Name" />
+                    <jet-input 
+                    id="name" 
+                    type="text" 
+                    class="mt-1 block w-full rounded-xl text-sm" 
+                    v-model="form.name" 
+                    required autofocus autocomplete="name" 
+                    placeholder="Enter your name" />
+                </div>
 
-            <div class="mt-4">
-                <jet-label for="email" value="Email" />
-                <jet-input 
-                id="email" 
-                type="email" 
-                class="mt-1 block w-full rounded-xl text-sm" 
-                v-model="form.email" 
-                required placeholder="Enter your email"/>
-            </div>
+                <div class="mt-4">
+                    <jet-label for="email" value="Email" />
+                    <jet-input 
+                    id="email" 
+                    type="email" 
+                    class="mt-1 block w-full rounded-xl text-sm" 
+                    v-model="form.email" 
+                    required placeholder="Enter your email"/>
+                </div>
 
-            <div class="mt-4">
-                <jet-label for="password" value="Password" />
-                <jet-input 
-                id="password" 
-                type="password" 
-                class="mt-1 block w-full rounded-xl text-sm" 
-                v-model="form.password" 
-                required autocomplete="new-password" 
-                placeholder="Enter your password"/>
-            </div>
+                <div class="mt-4">
+                    <jet-label for="password" value="Password" />
+                    <jet-input 
+                    id="password" 
+                    type="password" 
+                    class="mt-1 block w-full rounded-xl text-sm" 
+                    v-model="form.password" 
+                    required autocomplete="new-password" 
+                    placeholder="Enter your password"/>
+                </div>
 
-            <div class="mt-4">
-                <jet-label for="password_confirmation" value="Confirm Password" />
-                <jet-input 
-                id="password_confirmation" 
-                type="password" 
-                class="mt-1 block w-full rounded-xl text-sm" 
-                v-model="form.password_confirmation" 
-                required autocomplete="new-password" 
-                placeholder="Enter your confirm password"/>
-            </div>
+                <div class="mt-4">
+                    <jet-label for="password_confirmation" value="Confirm Password" />
+                    <jet-input 
+                    id="password_confirmation" 
+                    type="password" 
+                    class="mt-1 block w-full rounded-xl text-sm" 
+                    v-model="form.password_confirmation" 
+                    required autocomplete="new-password" 
+                    placeholder="Enter your confirm password"/>
+                </div>
 
-            <!-- Agreement of T&C -->
-            <div class="flex items-center justify-start mt-4" v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
-                <jet-label for="terms">
-                    <div class="flex items-center">
-                        <jet-checkbox class="form-checkbox mr-3" name="terms" id="terms" v-model:checked="form.terms" />
+                <!-- Agreement of T&C -->
+                <div class="flex items-center justify-start mt-4" v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
+                    <jet-label for="terms">
+                        <div class="flex items-center">
+                            <jet-checkbox class="form-checkbox mr-3" name="terms" id="terms" v-model:checked="form.terms" />
 
-                        <div class="ml-2">
-                            I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
+                            <div class="ml-2">
+                                I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
+                            </div>
                         </div>
-                    </div>
-                </jet-label>
-            </div>
-            <!-- <div class="flex items-center justify-start mt-4">
-                <input type="checkbox" class="form-checkbox mr-3" />
-                <span>I agree to the Terms and Conditions.</span>
-            </div> -->
+                    </jet-label>
+                </div>
+                <!-- <div class="flex items-center justify-start mt-4">
+                    <input type="checkbox" class="form-checkbox mr-3" />
+                    <span>I agree to the Terms and Conditions.</span>
+                </div> -->
 
-            <div class="mt-6 flex justify-center sm:justify-end mb-6">
-                <jet-button 
-                class="ml-0 rounded-3xl px-16 py-4" 
-                :class="{ 'opacity-25': form.processing }" 
-                :disabled="form.processing">
-                    Sign Up
-                </jet-button>
-            </div>
-        </form>
+                <div class="flex items-center justify-between mt-6 mb-6">
+                    <div class="flex justify-center items-center text-base text-gray-600">
+                        <span class="md:mx-2">&#x276E;</span> 
+                        <button 
+                        class="hover:underline mx-2"
+                        @click="this.role = ''">Return to select role</button>
+                    </div>
+                    <jet-button 
+                    class="ml-0 rounded-3xl px-16 py-4" 
+                    :class="{ 'opacity-25': form.processing }" 
+                    :disabled="form.processing">
+                        Sign Up
+                    </jet-button>
+                </div>
+            </form>
+
             <!-- Linebreak -->
             <h2>
                 <span class="linebreak">or</span>
@@ -117,11 +145,6 @@
 
             <!-- Social Auth -->
             <div>
-                <!-- Linebreak -->
-                <h2>
-                    <span class="linebreak">or</span>
-                </h2>
-
                 <p class="text-center text-blue-900 font-black">Sign up with</p>
                 <div class="social-auth flex justify-center mt-4">
                     <a type="button" href="google/auth">
@@ -140,10 +163,11 @@
                         </button>
                     </a>
                 </div>
-            </div>       
+            </div>
+        </div>       
 
         <!-- Content in Sign Up Form for Recruiters -->
-        <form @submit.prevent="submit" v-show="!isJobSeeker">
+        <form @submit.prevent="submit" v-show="role === 'Recruiter'">
             <!-- Form Input -->
             <div class="mt-4">
                 <jet-label for="name" value="Company Name" />
@@ -201,7 +225,14 @@
                 </jet-label>
             </div>
 
-            <div class="mt-6 flex justify-center sm:justify-end mb-6">
+            <div class="mt-6 flex items-center justify-between mb-6">
+                <div class="flex justify-center items-center text-base text-gray-600">
+                    <span class="md:mx-2">&#x276E;</span>
+                    <button 
+                    class="hover:underline mx-2"
+                    @click="this.role = ''">Return to select role</button>
+                </div>
+
                 <jet-button 
                 class="ml-0 rounded-3xl px-16 py-4" 
                 :class="{ 'opacity-25': form.processing }" 
@@ -252,7 +283,8 @@
                     password_confirmation: '',
                     terms: false,
                 }),
-                isJobSeeker: true,
+                role: '',
+                isRecruiter: false,
                 linkedInIcon: faLinkedin,
                 googleIcon: faGoogle,
                 githubIcon: faGithub
@@ -263,11 +295,7 @@
                 this.form.post(this.route('register'), {
                     onFinish: () => this.form.reset('password', 'password_confirmation'),
                 })
-            },
-
-            toggleJobSeekerButton() {
-                this.isJobSeeker = !this.isJobSeeker;
-            },
+            }
         }
     })
 </script>
