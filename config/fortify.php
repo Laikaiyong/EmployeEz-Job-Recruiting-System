@@ -2,6 +2,7 @@
 
 use App\Providers\RouteServiceProvider;
 use Laravel\Fortify\Features;
+use Illuminate\Support\Facades\Auth;
 
 return [
 
@@ -61,8 +62,19 @@ return [
     |
     */
 
-    'home' => RouteServiceProvider::HOME,
-
+    'home' =>  function () {
+        $team_id = Auth::user()->current_team_id;
+        $type = Auth::user()->type;
+       
+        if ($team_id == 2)
+        {
+            if ($type == null)
+            {
+                return '/user/profile';   
+            }
+        }
+        return '/dashboard';
+    },
     /*
     |--------------------------------------------------------------------------
     | Fortify Routes Prefix / Subdomain
@@ -134,7 +146,7 @@ return [
     'features' => [
         Features::registration(),
         Features::resetPasswords(),
-        // Features::emailVerification(),
+        Features::emailVerification(),
         Features::updateProfileInformation(),
         Features::updatePasswords(),
         Features::twoFactorAuthentication([

@@ -105,7 +105,7 @@
                                             Manage Account
                                         </div>
 
-                                        <jet-dropdown-link :href="route('profile.show')">
+                                        <jet-dropdown-link :href="route('user.profile', { id: $page.props.user.id, name: $page.props.user.name })">
                                             Profile
                                         </jet-dropdown-link>
 
@@ -160,7 +160,7 @@
                         </div>
 
                         <div class="mt-3 space-y-1">
-                            <jet-responsive-nav-link :href="route('profile.show')" :active="route().current('profile.show')">
+                            <jet-responsive-nav-link :href="route('profile.show')" :active="route().current('user.profile', { id: $page.props.user.id, name: $page.props.user.name })">
                                 Profile
                             </jet-responsive-nav-link>
 
@@ -214,12 +214,6 @@
                     </div>
                 </div>
             </nav>
-            <!-- Page Heading -->
-            <header class="bg-white shadow" v-if="$slots.header">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <slot name="header"></slot>
-                </div>
-            </header>
         </div>
     </div>
 </template>
@@ -271,6 +265,6 @@
             logout() {
                 this.$inertia.post(route('logout'));
             },
-        }
+        },
     })
 </script>

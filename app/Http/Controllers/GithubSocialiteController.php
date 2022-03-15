@@ -47,7 +47,7 @@ class GithubSocialiteController extends Controller
                     'email' => $user->email,
                     'github_id'=> $user->id,
                     'password' => encrypt('github'),
-                    'online'=> true,
+                    'online'=> false,
                 ]);
                 $team = Team::where('id', 3)->first();
                 $newUser->teams()->attach($team);

@@ -54,6 +54,13 @@
                 <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" />
                 <jet-input-error :message="form.errors.email" class="mt-2" />
             </div>
+
+            <!-- Description -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="description" value="Description" />
+                <jet-input id="description" type="text" class="mt-1 block w-full" v-model="form.description" />
+                <jet-input-error :message="form.errors.description" class="mt-2" />
+            </div>
         </template>
 
         <template #actions>
@@ -75,6 +82,7 @@
     import JetInput from '@/Jetstream/Input.vue'
     import JetInputError from '@/Jetstream/InputError.vue'
     import JetLabel from '@/Jetstream/Label.vue'
+    import JetDropdown from '@/Jetstream/Dropdown.vue'
     import JetActionMessage from '@/Jetstream/ActionMessage.vue'
     import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue'
 
@@ -86,6 +94,7 @@
             JetInput,
             JetInputError,
             JetLabel,
+            JetDropdown,
             JetSecondaryButton,
         },
 
@@ -97,6 +106,7 @@
                     _method: 'PUT',
                     name: this.user.name,
                     email: this.user.email,
+                    description: this.user.description,
                     photo: null,
                 }),
 

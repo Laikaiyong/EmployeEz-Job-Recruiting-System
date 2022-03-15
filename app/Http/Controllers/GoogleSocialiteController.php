@@ -47,7 +47,7 @@ class GoogleSocialiteController extends Controller
                     'email' => $user->email,
                     'google_id'=> $user->id,
                     'password' => encrypt('google'),
-                    'online' => true
+                    'online' => false
                 ]);
                 $team = Team::where('id', 3)->first();
                 $newUser->teams()->attach($team);

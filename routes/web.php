@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 use App\Http\Controllers\LinkedinSocialiteController;
@@ -58,13 +59,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::get('/home', function () {
-    return Inertia::render('UserHome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register')
-    ]);
-})->name('home');
-
 Route::get('/jobs', function () {
     return Inertia::render('Jobs', [
         'canLogin' => Route::has('login'),
@@ -79,32 +73,38 @@ Route::get('/jobs/{id}', function($id){
 })->where(['id' => '[0-9]+']);
 
 
-Route::get('/user/{id}/{name}', function($id, $name){
+Route::get('/user/{id}/{name}', function(Request $request, $id, $name){
     return Inertia::render('UserProfile', [
         'selectedUser' => User::select("*")
                             ->where('id', $id)
                             ->where('name', $name)
                             ->get(),
     ]);
-})->where(['id' => '[0-9]+', 'name' => '[A-Za-z]+']);;
+})->where(['id' => '[0-9]+'])->name('user.profile');
 
-Route::get('/company', function () {
+Route::get('/company', function (Request $request) {
     return Inertia::render('Company', [
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register')
+        'canRegister' => Route::has('register'),
+        'companies' => User::select("*")
+                        ->where('current_team_id', 2)
+                        ->where('name', '!=', 'Recruiter')
+                        ->when($request->keyword, 
+                            function($query, $keyword) {
+                                $query->where('name', 'LIKE', '%' .keyword.'%');      
+        })->paginate()
     ]);
 })->name('company');
-
-// Recruiter Profile
-Route::get('/company/profile', function () {
-    return Inertia::render('CompanyProfile');
-});
 
 Route::resource('jobposts', JobPostingController::class);
 Route::resource('application', ApplicationController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/add', function () {
     return Inertia::render('JobsAdd');
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/apply', function () {
+    return Inertia::render('ApplicationRequest');
 });
 
 Route::fallback(function() {

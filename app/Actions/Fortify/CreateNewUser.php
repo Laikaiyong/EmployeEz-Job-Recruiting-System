@@ -37,7 +37,7 @@ class CreateNewUser implements CreatesNewUsers
                     'name' => $input['name'],
                     'email' => $input['email'],
                     'password' => Hash::make($input['password']),
-                    'online' => true
+                    'online' => false
                 ]), function (User $user) {
                     $this->setRecruiter($user);
                 });
@@ -50,7 +50,7 @@ class CreateNewUser implements CreatesNewUsers
                         'name' => $input['name'],
                         'email' => $input['email'],
                         'password' => Hash::make($input['password']),
-                        'online' => true
+                        'online' => false
                     ]), function (User $user) {
                         $this->setJobSeeker($user);
                     });
