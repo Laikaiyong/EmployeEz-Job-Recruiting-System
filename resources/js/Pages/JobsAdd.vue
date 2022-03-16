@@ -165,8 +165,7 @@
 
     <page-footer></page-footer>
 </template>
-// I am HonKit Impact,
-// Please refer the JobPosts.vue for form action
+
 <script>
     import { defineComponent } from 'vue';
     import PageHeader from '@/Components/PageHeader.vue';
