@@ -21,8 +21,11 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            // 'contact_number' => ['required', 'numeric', 'phone_number', 'regex:/(01)[0-9]{9|10}/'],
             'description' => ['required', 'string', 'max:512'],
+            // 'title' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
+            // 'cover_image' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {
@@ -33,10 +36,15 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $user instanceof MustVerifyEmail) {
             $this->updateVerifiedUser($user, $input);
         } else {
+            // $cover_name = time().'_'.$input['name'];
+            // $cover_path = $input['cover_image']->storeAs('uploads', $cover_name, 'public');
+
             $user->forceFill([
                 'name' => $input['name'],
                 'email' => $input['email'],
-                'description' => $input['description']
+                // 'title' => $input['title'],
+                'description' => $input['description'],
+                // 'cover_image_url' => '/storage/'.$cover_path
             ])->save();
         }
     }
@@ -53,7 +61,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         $user->forceFill([
             'name' => $input['name'],
             'email' => $input['email'],
-            'description' => $input['description'],
             'email_verified_at' => null,
         ])->save();
 

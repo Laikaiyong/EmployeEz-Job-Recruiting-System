@@ -18,15 +18,21 @@
                 class="max-w-xs w-64 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer place-self-center mb-10">
                     <div
                     class="mx-2 my-2 mt-3">
+                        <img
+                        v-if="company.cover_image_url"
+                        :src="company.cover_image_url" 
+                        class="w-full h-2/5 my-auto object-cover rounded-t-3xl"
+                        style="max-height: 125px;">
                         <img 
-                        :src="company.companyBanner" 
+                        v-else 
+                        src="/img/EmployeEz banner.png"
                         class="w-full h-2/5 my-auto object-cover rounded-t-3xl"
                         style="max-height: 125px;">
                     </div>
                     <div class="w-full basis-2/5 my-auto">
                         <div class="mx-4 mb-4 px-4 my-4">
                             <h2 class="font-bold"> {{ company.name }} </h2>
-                             <p class="text-gray-500"> {{ company.category }} </p>
+                             <p class="text-gray-500"> {{ company.type }} </p>
                         </div>
 
                         <div class="text-sm text-gray-500 mx-4 px-4">
@@ -37,15 +43,15 @@
                                 width="20"
                                 height="20"
                                 class="inline">
-                                <span class="mx-4"> {{ company.location }} </span>   
+                                <span class="mx-4"> {{ company.state }} </span>   
                             </div>
                         </div>
                     </div>
 
-                    <!-- Apply Button -->
-                    <div class="py-6 w-full basis-1/5 flex justify-center my-auto" >
+                    <!-- View Button -->
+                    <a :href="route('user.profile', { id: company.id, name: company.name })" class="py-6 w-full basis-1/5 flex justify-center my-auto" >
                         <button class="w-1/2 h-fit bg-blue-900 hover:opacity-80 text-sm text-white rounded-xl shadow-lg p-2">View company</button>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -54,56 +60,7 @@
 </template>
 
 <script>
-    var companies = [
-        {
-            id: 1,
-            companyBanner: "https://www.thebrandlaureate.com/wp-content/uploads/2020/12/Setel-1024x576-1.jpg",
-            name: "Setel",
-            category: "Technology",
-            location: "Kuala Lumpur",
-        },
-        {
-            id: 2,
-            companyBanner: "https://malaysiaboleh.com/wp-content/uploads/2018/07/banner-maybank.jpg",
-            name: "Maybank",
-            category: "Finance",
-            location: "Kuala Lumpur",
-        },
-        {
-            id: 3,
-            companyBanner: "https://www.livemint.com/rf/Image-621x414/LiveMint/Period1/2013/02/14/Photos/Intel--621x414.jpg",
-            name: "Intel Corporation",
-            category: "Technology",
-            location: "Bayan Lepas",
-        },
-        {
-            id: 4,
-            companyBanner: "https://image-tc.galaxy.tf/wijpeg-1lf3mhli9cwh2v4y6ox2nbgx0/file.jpg",
-            name: "Sunway",
-            category: "Business",
-            location: "Bandar Sunway",
-        },
-        {
-            id: 5,
-            companyBanner: "https://miro.medium.com/max/1400/1*pPSgLTHG7tIelAzZK5-ENg.jpeg",
-            name: "Shopee",
-            category: "Technology",
-            location: "Kuala Lumpur",
-        },
-        {
-            id: 6,
-            companyBanner: "https://assets.theedgemarkets.com/Petronas_TEM1361_20210316192047_theedgemarkets_2.jpg",
-            name: "Petronas",
-            category: "Engineering",
-            location: "Kuala Lumpur",
-        }
-    ]
     export default {
-        // setup() {
-        //     return {
-        //         companies
-        //     }
-        // },
         data() {
             return {
                 keyword: ""
@@ -111,7 +68,7 @@
         },
         methods: {
             runQuery() {
-                this.companies = companies.filter(company => company.name == this.keyword);
+                this.$inertia.replace(this.route('company', {keyword: this.keyword}))
             }
         }
     }

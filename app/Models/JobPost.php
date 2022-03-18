@@ -23,6 +23,11 @@ class JobPost extends Model
         'type',
         'location',
         'experience_level',
-        'user_id'
+        'user_id',
+        'company',
+        'industry',
+        'beneficial_skills',
+        'closing_date',
+        'cover_image_url'
     ];
 }
