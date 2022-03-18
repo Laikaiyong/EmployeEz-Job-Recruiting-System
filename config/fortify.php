@@ -63,17 +63,16 @@ return [
     */
 
     'home' =>  function () {
-        $team_id = Auth::user()->current_team_id;
-        $type = Auth::user()->type;
+        $title = Auth::user()->title;
        
-        if ($team_id == 2)
+        if ($title == null)
         {
-            if ($type == null)
-            {
-                return '/user/profile';   
-            }
+            return '/user/profile';   
         }
-        return '/dashboard';
+        else
+        {
+            return '/dashboard';
+        }
     },
     /*
     |--------------------------------------------------------------------------

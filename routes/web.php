@@ -54,15 +54,27 @@ Route::get('/aboutus', function () {
     ]);
 })->name('aboutus');
 
+Route::get('/support', function () {
+    return Inertia::render('FAQSupport', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register')
+    ]);
+})->name('faqsupport');
+
 // Admin Deshboard View
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::get('/jobs', function () {
+Route::get('/jobs', function (Request $request) {
     return Inertia::render('Jobs', [
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register')
+        'canRegister' => Route::has('register'),
+        'jobs' => JobPost::select("*")
+                ->when($request->keyword, 
+                    function($query, $keyword) {
+                        $query->where('title', 'LIKE', '%' .$keyword.'%');      
+        })->paginate()
     ]);
 })->name('jobs');
 
@@ -71,6 +83,10 @@ Route::get('/jobs/{id}', function($id){
         'selectedJob' => JobPost::where('id', $id)->first()
     ]);
 })->where(['id' => '[0-9]+']);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/applied', function($id){
+    return Inertia::render('JobsApplyList', []);
+})->name('jobsapplied');
 
 
 Route::get('/user/{id}/{name}', function(Request $request, $id, $name){
@@ -88,10 +104,9 @@ Route::get('/company', function (Request $request) {
         'canRegister' => Route::has('register'),
         'companies' => User::select("*")
                         ->where('current_team_id', 2)
-                        ->where('name', '!=', 'Recruiter')
                         ->when($request->keyword, 
                             function($query, $keyword) {
-                                $query->where('name', 'LIKE', '%' .keyword.'%');      
+                                $query->where('name', 'LIKE', '%' .$keyword.'%');      
         })->paginate()
     ]);
 })->name('company');
@@ -103,8 +118,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/add', function () {
     return Inertia::render('JobsAdd');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/apply', function () {
-    return Inertia::render('ApplicationRequest');
+Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/{id}/apply', function ($id) {
+    return Inertia::render('ApplicationRequest', [
+        'selectedJob' => JobPost::where('id', $id)->first()
+    ]);
 });
 
 Route::fallback(function() {

@@ -10,7 +10,7 @@
             </div>
             <p class="font-bold text-2xl">Oops, something's missing</p>
             <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold my-10 py-3 px-4 rounded-xl">
-                <a href="{{ URL::to('/') }}">Back to Main Menu</a>
+                <a :href="baseUrl">Back to Main Menu</a>
             </button>
             </div>
         </div>
@@ -24,6 +24,9 @@
     import PageHeader from '@/Components/PageHeader.vue';
     import PageFooter from '@/Components/PageFooter.vue';
     import { Head } from '@inertiajs/inertia-vue3';
+
+    var baseUrl = window.location.origin;
+
     export default defineComponent({
         components: {
             PageHeader,
@@ -34,7 +37,12 @@
         props: {
             canLogin: Boolean,
             canRegister: Boolean
-        }
+        },
+        data() {
+            return {
+                baseUrl
+            }
+        },
     })
 </script>
 

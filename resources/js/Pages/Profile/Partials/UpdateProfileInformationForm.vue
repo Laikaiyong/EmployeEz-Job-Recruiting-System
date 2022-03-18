@@ -61,6 +61,8 @@
                 <jet-input id="description" type="text" class="mt-1 block w-full" v-model="form.description" />
                 <jet-input-error :message="form.errors.description" class="mt-2" />
             </div>
+
+            <!-- Title -->
         </template>
 
         <template #actions>
