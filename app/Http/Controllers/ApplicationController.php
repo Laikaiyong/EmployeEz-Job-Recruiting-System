@@ -29,18 +29,28 @@ class ApplicationController extends Controller
     public function store(Request $request)
     {
         Validator::make($request->all(), [
-            'title' => ['required'],
-            'description' => ['required'],
-            'requirement' => ['required'],
-            'allowance' => ['required'],
-            'duration' => ['required'],
-            'user_id' => ['required']
+            'resume' => ['required', 'mimes:doc,pdf,docx,zip'],
+            'jobpostid' => ['required'],
+            'user_id' => ['required'],
+            'user_name' => ['required'],
+            'additional_comments' => ['nullable', 'max:1024']
         ])->validate();
   
-        Application::create($request->all());
+        $resume_name = time().'_'.$request->input('user_name').'_'.$request->input("jobpostid");
+
+        $resume_path = $request->file('resume')->store($resume_name, 'public');
+        $resume_exact_path = 'http://127.0.0.1:8000/storage/'.$resume_path;
+
+
+        Application::create([
+            'resume' => $resume_exact_path,
+            'jobpostid' => $request->input('jobpostid'),
+            'user_id' => $request->input('user_id'),
+            'user_name' => $request->input('user_name'),
+            'additional_comments' => $request->input('additional_comments'),
+        ]);
   
-        return redirect()->back()
-                    ->with('message', 'Job Post Created Successfully.');
+        return Redirect::route('jobs.applied');
     }
   
     /**

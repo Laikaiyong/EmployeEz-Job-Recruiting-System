@@ -22,7 +22,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             // 'contact_number' => ['required', 'numeric', 'phone_number', 'regex:/(01)[0-9]{9|10}/'],
-            'description' => ['required', 'string', 'max:512'],
+            'description' => ['required', 'string', 'max:1024'],
             // 'title' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
             // 'cover_image' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],

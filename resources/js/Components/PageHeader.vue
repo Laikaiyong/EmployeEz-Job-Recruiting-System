@@ -20,6 +20,27 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
+                                <jet-nav-link v-if="!($page.props.user.current_team_id==2 || $page.props.user.current_team_id==3)" :href="route('task')" :active="route().current('task')">
+                                      Task
+                                </jet-nav-link>
+                                <jet-nav-link v-if="$page.props.user.current_team_id==3" :href="route('jobs')" :active="route().current('jobs')">
+                                      Job
+                                </jet-nav-link>
+                                <jet-nav-link v-if="$page.props.user.current_team_id==3" :href="route('company')" :active="route().current('company')">
+                                      Company
+                                </jet-nav-link>
+                                <jet-nav-link v-if="$page.props.user.current_team_id==3" :href="route('jobs.applied')" :active="route().current('jobs.applied')">
+                                      Application
+                                </jet-nav-link>
+                                <jet-nav-link v-if="$page.props.user.current_team_id==2" :href="route('jobs.created')" :active="route().current('jobs.created')">
+                                      JobPost
+                                </jet-nav-link>
+                                <jet-nav-link :href="route('aboutus')" :active="route().current('aboutus')">
+                                        About
+                                </jet-nav-link>
+                                <jet-nav-link :href="route('faqsupport')" :active="route().current('faqsupport')">
+                                        FAQ
+                                </jet-nav-link>
                             </div>
                         </div>
 
@@ -33,14 +54,14 @@
                                                 {{ $page.props.user.current_team.name }}
 
                                                 <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                                v-if="$page.props.user.current_team_id==1" >
+                                                v-if="!($page.props.user.current_team_id==2 || $page.props.user.current_team_id==3)" >
                                                     <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
                                                 </svg>
                                             </button>
                                         </span>
                                     </template>
 
-                                    <template v-if="$page.props.user.current_team_id==1" #content>
+                                    <template v-if="!($page.props.user.current_team_id==2 || $page.props.user.current_team_id==3)" #content>
                                         <div class="w-60">
                                             <!-- Team Management -->
                                             <template v-if="$page.props.jetstream.hasTeamFeatures">
@@ -145,6 +166,36 @@
                             Dashboard
                         </jet-responsive-nav-link>
                     </div>
+                    <div v-if="!($page.props.user.current_team_id==2 || $page.props.user.current_team_id==3)" class="pt-1 pb-3 space-y-1">
+                        <jet-responsive-nav-link :href="route('task')" :active="route().current('task')">
+                            Task
+                        </jet-responsive-nav-link>
+                    </div>
+                    <div v-if="$page.props.user.current_team_id==3" class="pt-1 pb-3 space-y-1">
+                        <jet-responsive-nav-link :href="route('jobs')" :active="route().current('jobs')">
+                            Job
+                        </jet-responsive-nav-link>
+                    </div>
+                    <div v-if="$page.props.user.current_team_id==3" class="pt-1 pb-3 space-y-1">
+                        <jet-responsive-nav-link :href="route('company')" :active="route().current('company')">
+                            Company
+                        </jet-responsive-nav-link>
+                    </div>
+                    <div v-if="$page.props.user.current_team_id==3" class="pt-1 pb-3 space-y-1">
+                        <jet-responsive-nav-link :href="route('jobs.applied')" :active="route().current('jobs.applied')">
+                            Application
+                        </jet-responsive-nav-link>
+                    </div>
+                    <div v-if="$page.props.user.current_team_id==2" class="pt-1 pb-3 space-y-1">
+                        <jet-responsive-nav-link :href="route('jobs.created')" :active="route().current('jobs.created')">
+                            JobPost
+                        </jet-responsive-nav-link>
+                    </div>
+                    <div class="pt-1 pb-3 space-y-1">
+                        <jet-responsive-nav-link :href="route('aboutus')" :active="route().current('aboutus')">
+                            About
+                        </jet-responsive-nav-link>
+                    </div>
 
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">
@@ -176,7 +227,7 @@
                             </form>
 
                             <!-- Team Management -->
-                            <template v-if="$page.props.jetstream.hasTeamFeatures && $page.props.user.current_team_id==1">
+                            <template v-if="$page.props.jetstream.hasTeamFeatures && !($page.props.user.current_team_id==2 || $page.props.user.current_team_id==3)">
                                 <div class="border-t border-gray-200"></div>
 
                                 <div class="block px-4 py-2 text-xs text-gray-400">
