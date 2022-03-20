@@ -84,7 +84,7 @@ Route::get('/jobs/{id}', function($id){
     ]);
 })->where(['id' => '[0-9]+']);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/applied', function($id){
+Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/applied', function(){
     return Inertia::render('JobsApplyList', []);
 })->name('jobsapplied');
 
