@@ -1,5 +1,5 @@
 <template>
-    <Head title="Jobs"></Head>
+    <Head title="FAQs"></Head>
     <page-header v-if="$page.props.user"></page-header>
     <unauth-header v-else canLogin=canLogin canRegister=canRegister></unauth-header>
 

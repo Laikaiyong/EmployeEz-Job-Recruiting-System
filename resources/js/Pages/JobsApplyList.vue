@@ -1,6 +1,6 @@
 <template>
     <!-- Might renamed to JobsApplySavedList.vue -->
-    <Head title="Jobs"></Head>
+    <Head title="Applied Jobs"></Head>
     <page-header v-if="$page.props.user"></page-header>
 
     <!-- NavBar for toggling Saved Job and Applied Job -->

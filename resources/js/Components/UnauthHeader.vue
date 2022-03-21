@@ -26,6 +26,9 @@
                               <jet-nav-link :href="route('aboutus')" :active="route().current('aboutus')">
                                       About
                               </jet-nav-link>
+                              <jet-nav-link :href="route('faqsupport')" :active="route().current('faqsupport')">
+                                      FAQ
+                              </jet-nav-link>
                             </div>
                         </div>
 
@@ -80,6 +83,12 @@
                     </jet-responsive-nav-link>
                 </div>
                 <div class="pt-1 pb-3 space-y-1">
+                    <jet-responsive-nav-link :href="route('faqsupport')" :active="route().current('faqsupport')">
+                        FAQ
+                    </jet-responsive-nav-link>
+                </div>
+                <div class="pb-1 border-t border-gray-200"></div>
+                <div class="pt-1 pb-1">
                     <jet-responsive-nav-link :href="route('login')">
                         Log in
                     </jet-responsive-nav-link>

@@ -58,7 +58,7 @@
             <!-- Description -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="description" value="Description" />
-                <jet-input id="description" type="text" class="mt-1 block w-full" v-model="form.description" />
+                <textarea id="description" class="appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm h-60" v-model="form.description" ></textarea>
                 <jet-input-error :message="form.errors.description" class="mt-2" />
             </div>
 

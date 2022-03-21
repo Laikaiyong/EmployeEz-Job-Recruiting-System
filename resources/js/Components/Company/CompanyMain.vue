@@ -56,11 +56,26 @@
             </div>
         </div>
     </div>
+    <div class="mx-auto mb-10" v-if="($page.props.companies.links).length > 3">
+        <div class="justify-center flex flex-wrap -mb-1">
+            <template v-for="(link, page) in $page.props.companies.links" :key="page">
+                <div v-if="link.url === null" class="mr-1 mb-1 px-4 py-3 text-sm leading-4 text-gray-400 border rounded"
+                    v-html="link.label" />
+                <Link v-else
+                    class="mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded focus:border-indigo-800 focus:text-indigo-800"
+                    :class="{ 'bg-indigo-800 text-white': link.active }" :href="link.url + '&keyword=' + keyword" v-html="link.label" />
+            </template>
+        </div>
+    </div>
 </div>
 </template>
 
 <script>
+    import { Link } from '@inertiajs/inertia-vue3';
     export default {
+        components: {
+            Link
+        },
         data() {
             return {
                 keyword: ""

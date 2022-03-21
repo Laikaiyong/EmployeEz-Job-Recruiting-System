@@ -18,7 +18,7 @@ class JobPostingController extends Controller
     public function index()
     {
         $data = JobPost::all();
-        return Inertia::render('JobPost', ['data' => $data]);
+        // return Inertia::render('JobPost', ['data' => $data]);
     }
   
     /**
@@ -29,18 +29,46 @@ class JobPostingController extends Controller
     public function store(Request $request)
     {
         Validator::make($request->all(), [
-            'title' => ['required'],
-            'description' => ['required'],
-            'requirement' => ['required'],
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:1024'],
+            'requirement' => ['required', 'string', 'max:1024'],
+            'location' => ['required', 'string', 'max:20'],
+            'type' => ['required', 'string'],
+            'industry' => ['required', 'string'],
+            'experience_level' => ['required', 'string'],
             'allowance' => ['required'],
-            'duration' => ['required'],
-            'user_id' => ['required']
+            'company' => ['required'],
+            'user_id' => ['required'],
+            'beneficial_skills' => ['required', 'string', 'max:1024'],
+            'closing_date' => ['required'],
+            'allowance' => ['nullable'],
+            'duration' => ['nullable'],
+            'photo' => ['mimes:jpg,jpeg,png,gif,svg,webp', 'max:1024']
         ])->validate();
-  
-        JobPost::create($request->all());
-  
-        return redirect()->back()
-                    ->with('message', 'Job Post Created Successfully.');
+        $image_name = time().'_'.$request->input('title').'_'.$request->input("company");
+
+        $image_path = $request->file('photo')->store($image_name, 'public');
+        $image_exact_path = 'http://127.0.0.1:8000/storage/'.$image_path;
+
+        JobPost::create([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'requirement' => $request->input('requirement'),
+            'location' => $request->input('location'),
+            'type' => $request->input('type'),
+            'industry' => $request->input('industry'),
+            'experience_level' => $request->input('experience_level'),
+            'allowance' => $request->input('allowance'),
+            'company' => $request->input('company'),
+            'user_id' => $request->input('user_id'),
+            'beneficial_skills' => $request->input('beneficial_skills'),
+            'closing_date' => $request->input('closing_date'),
+            'allowance' => $request->input('allowance'),
+            'duration' => $request->input('duration'),
+            'cover_image_url' => $image_exact_path
+        ]);
+
+        return Redirect::route('jobs.created');
     }
   
     /**

@@ -15,6 +15,11 @@ class CreateApplicationsTable extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
+            $table->string('resume');
+            $table->foreignId('jobpostid');
+            $table->foreignId('user_id');
+            $table->string('user_name');
+            $table->text('additional_comments')->nullable();
             $table->timestamps();
         });
     }

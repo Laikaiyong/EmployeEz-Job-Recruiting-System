@@ -21,7 +21,7 @@
                         <img 
                         v-if="job.cover_image_url != null"
                         :src="job.cover_image_url" 
-                        style="max-height: 125px;"
+                        style="max-height: 125px; height: 125px;"
                         class="w-full h-2/5 my-auto object-cover rounded-t-3xl">
                         <img 
                         v-else 
@@ -67,18 +67,35 @@
                     </div>
 
                     <!-- Apply Button -->
-                    <div class="py-6 w-full basis-1/5 flex justify-center my-auto" >
-                        <button class="w-1/2 h-fit bg-blue-900 hover:opacity-80 text-sm text-white rounded-xl shadow-lg p-2">Apply Now</button>
+                    <div class="py-6 w-full basis-1/5 flex text-center justify-center my-auto" >
+                        <a class="w-1/2 h-fit bg-blue-900 hover:opacity-80 text-sm text-white rounded-xl shadow-lg p-2" :href="route('jobs.profile', { id: job.id })" >
+                            <button>View Details</button>
+                        </a>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="mx-auto mb-10" v-if="($page.props.jobs.links).length > 3">
+        <div class="justify-center flex flex-wrap -mb-1">
+            <template v-for="(link, page) in $page.props.jobs.links" :key="page">
+                <div v-if="link.url === null" class="mr-1 mb-1 px-4 py-3 text-sm leading-4 text-gray-400 border rounded"
+                    v-html="link.label" />
+                <Link v-else
+                    class="mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded focus:border-indigo-800 focus:text-indigo-800"
+                    :class="{ 'bg-indigo-800 text-white': link.active }" :href="link.url + '&keyword=' + keyword" v-html="link.label" />
+            </template>
         </div>
     </div>
 </div>
 </template>
 
 <script>
+    import { Link } from '@inertiajs/inertia-vue3';
     export default {
+        components: {
+            Link
+        },
         data() {
             return {
                 keyword: ""

@@ -1,5 +1,5 @@
 <template>
-    <div class="pl-16">
+    <div>
         <a href="/">
             <img src="/img/EmployeEz.png" 
                 alt="EmployeEz Logo" 
@@ -10,8 +10,7 @@
             {{ text }} 
         </p>
         
-        <img :src="svg" 
-        alt="A SVG Logo"
+        <img :src="svg"
         class="pr-8 mt-8">
     </div>
 </template>
