@@ -2094,15 +2094,12 @@ select {
 .pb-1 {
   padding-bottom: 0.25rem;
 }
-<<<<<<< HEAD
 .pt-8 {
   padding-top: 2rem;
 }
 .pt-40 {
   padding-top: 10rem;
 }
-=======
->>>>>>> origin/main
 .pr-8 {
   padding-right: 2rem;
 }
@@ -2714,8 +2711,6 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
-<<<<<<< HEAD
-=======
 .focus\:bg-rose-600:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(225 29 72 / var(--tw-bg-opacity));
@@ -2724,7 +2719,6 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(126 34 206 / var(--tw-bg-opacity));
 }
->>>>>>> origin/main
 .focus\:text-gray-700:focus {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
