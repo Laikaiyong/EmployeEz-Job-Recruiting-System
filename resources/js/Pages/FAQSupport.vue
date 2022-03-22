@@ -24,8 +24,27 @@
             </div>
         </div>
 
+        <!-- Job management questions -->
+        <div class="lg:max-w-6xl lg:mx-auto mx-4 mt-10" v-if="$page.props.user.current_team_id==2">
+            <h1 class="text-3xl text-center font-bold">About job managements</h1>
+            <div class="flex flex-col justify-center items-center space-y-6 justify-start py-4 mt-4 lg:max-w-3xl lg:mx-auto">
+                <div class="w-full" v-for="(job_faq, index) in management_faqs" :key="index">
+                    <details class="inline-block py-6 px-6 w-full bg-white font-medium text-xl text-left leading-tight rounded-lg shadow-lg hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-0 active:shadow-xl transition duration-150 ease-in-out">
+                        <summary>
+                            {{ job_faq.question }}
+                        </summary>
+                        <div class="text-base px-4 pt-4">
+                            <p class="mb-4">
+                                {{ job_faq.answer }}
+                            </p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+
         <!-- Job application questions -->
-        <div class="lg:max-w-6xl lg:mx-auto mx-4 mt-10">
+        <div class="lg:max-w-6xl lg:mx-auto mx-4 mt-10" v-else-if="$page.props.user.current_team_id==3">
             <h1 class="text-3xl text-center font-bold">About job application</h1>
             <div class="flex flex-col justify-center items-center space-y-6 justify-start py-4 mt-4 lg:max-w-3xl lg:mx-auto">
                 <div class="w-full" v-for="(job_faq, index) in job_faqs" :key="index">
@@ -93,21 +112,35 @@
                     },
                     {
                         question: "What is the status of my job application?",
-                        answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente assumenda, quibusdam corrupti quasi temporibus voluptates culpa quaerat tempora natus, ipsa vero aperiam optio praesentium voluptatibus, officiis accusantium fugit nostrum consectetur!"
+                        answer: "You can always check your application's status by clicking \"Application\" in the tab above. After that, by switching to \"Applied Job\" interface, you will be able to see every job you applied including the application's status."
                     },
                     {
                         question: "What sort of jobs does EmployeEz provide?",
-                        answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente assumenda, quibusdam corrupti quasi temporibus voluptates culpa quaerat tempora natus, ipsa vero aperiam optio praesentium voluptatibus, officiis accusantium fugit nostrum consectetur!"
+                        answer: "EmployeEz provides various type of jobs such as Internship, Part-time, and Full-time in industries like Information Technology, Finance, and Marketing. So, you can always browse the job you desired in EmployeEz!"
+                    },
+                ],
+                management_faqs: [
+                    {
+                        question: "How do I post jobs on the platform?",
+                        answer: "You can start posting jobs by setting up a profile, head on to the jobs sectopn, select add jobs and you are good to go! Make sure that your job posting consists of sufficient details so that you can attract more applicants!"
+                    },
+                    {
+                        question: "Will the applicants be notified after application review?",
+                        answer: "Yes, the applicants are able to view the job application's status in the \"Applied Jobs\" interface."
+                    },
+                    {
+                        question: "How can I extend the application deadline?",
+                        answer: "You need to navigate to the \"Jobs Created\" interface first by clicking \"Application\" on the tabs above. Then, click the \"Extend Application Duration\" button on the desired job cards."
                     },
                 ],
                 account_faqs: [
                     {
                         question: "How do I change my password?",
-                        answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente assumenda, quibusdam corrupti quasi temporibus voluptates culpa quaerat tempora natus, ipsa vero aperiam optio praesentium voluptatibus, officiis accusantium fugit nostrum consectetur!"
+                        answer: "You can change your password by clicking the profile picture at the top right corner of the interface. Then, by clicking \"Profile\" and \"Edit Details\" on the new interface redirected, you will be able to edit personal information of your profile including your password."
                     },
                     {
                         question: "How can I delete my account?",
-                        answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente assumenda, quibusdam corrupti quasi temporibus voluptates culpa quaerat tempora natus, ipsa vero aperiam optio praesentium voluptatibus, officiis accusantium fugit nostrum consectetur!"
+                        answer: "Similar to changing password (Please refer to \"How do I change my password?\"), you need to navigate to the \"Edit Details\" interface and click \"Delete Account\" buttons on the bottom-most of the interface."
                     }
                 ]
             }

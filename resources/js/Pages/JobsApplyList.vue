@@ -125,11 +125,11 @@
     <!-- Applied Job Tab-->
     <!-- If job seekers have applied to a job already -->
     <div 
-    class="lg:max-w-6xl lg:mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-y-10 mx-4 my-10 px-4"
+    class="lg:max-w-6xl lg:mx-auto grid applied-container gap-y-10 justify-center mx-4 my-10 px-4"
     v-show="isActive('Applied Job')"
     v-if="applied_jobs.length != 0">
         <div
-        v-for="job in applied_jobs" 
+        v-for="(job, index) in applied_jobs" 
         :key="job.applied_job_id" 
         class="w-3/4 h-full flex flex-col justify-center place-self-center shadow-lg rounded-3xl">
             <!-- Company Cover Image -->
@@ -186,11 +186,64 @@
             </div>
 
             <!-- Status Bar -->
-            <div class="w-full basis-1/5 flex justify-center mb-4 py-2 my-auto">
-                <div class="w-1/2 h-fit bg-gray-400 text-base text-center text-white rounded-xl shadow-lg p-2">
+            <div class="w-full basis-1/5 flex justify-center mb-4 pt-4">
+                <div class="w-5/6 h-fit bg-gray-400 text-base text-center text-white rounded-xl shadow-lg p-2">
                     {{ job.job_status }}
                 </div>
             </div>
+
+            <div class="w-full basis-1/5 flex justify-center mb-4">
+                <button class="w-5/6 h-fit bg-rose-500 text-base text-center text-white rounded-xl shadow-md hover:bg-rose-600 hover:shadow-lg focus:bg-rose-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-rose-700 active:shadow-lg transition duration-150 ease-in-out p-2"
+                @click="showModal(index)">
+                    Withdraw
+                </button>
+            </div>
+
+            <!-- Confirmation Modal -->
+            <Transition name="confirmation_modal">
+                <div
+                v-if="showingModal(index)"
+                :id="'Modal' + index"
+                class="modal fixed inset-0 w-full h-screen flex justify-center items-center bg-black">
+                    <div class="w-full max-w-lg bg-white shadow-lg rounded-lg">
+                        <!-- Modal Header -->
+                        <div class="flex flex-shrink-0 justify-between items-center w-full bg-clip-padding rounded-md outline-none border-b border-gray-200 px-4">
+                            <h2 class="text-2xl text-left text-red-500 font-bold">Job Application Withdrawal</h2>
+                            
+                            <!-- Closing button -->
+                            <button
+                            aria-label="close"
+                            class="text-2xl text-gray-500 my-2 mx-4"
+                            @click.prevent="close()">
+                                ×
+                            </button>
+                        </div>
+                        
+                        <!-- Modal Message -->
+                        <div class="p-4">
+                            <p class="text-base text-center mt-4">
+                                Are you sure that you want to withdraw the job application of "{{ job.job_title }}"?
+                            </p>
+                        </div>
+
+                        <!-- Close and Confirm buttons -->
+                        <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t border-gray-200 px-4 pt-4 my-4">
+                            <button 
+                            type="button"
+                            class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                            @click="close()">
+                                Close
+                            </button>
+                            <button 
+                            type="button"
+                            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+                            @click="deleteAppliedJob(job.applied_job_id)">
+                                Confirm
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </Transition>
         </div>
     </div>
     
@@ -238,6 +291,7 @@
         data() {
             return {
                 selectedTab: 'Applied Job',
+                selected_modal: '', // can only withdraw 1 application at a time
                 saved_jobs: [
                     {
                         saved_job_id: 1,
@@ -301,6 +355,16 @@
                         job_type: 'Full-time',
                         job_status: 'Viewed'
                     },
+                    {
+                        applied_job_id: 4,
+                        cover_img: 'https://www.thebrandlaureate.com/wp-content/uploads/2020/12/Setel-1024x576-1.jpg',
+                        job_title: 'Back-end Developer',
+                        company: 'Setel',
+                        job_location: 'Kuala Lumpur',
+                        job_industry: 'Technology',
+                        job_type: 'Full-time',
+                        job_status: 'Viewed'
+                    },
                 ],
             }
         },
@@ -310,11 +374,44 @@
             },
             isActive(selectedTab) {
                 return this.selectedTab === selectedTab;
+            },
+            showModal(index) {
+                this.selected_modal = 'Modal' + index;
+            },
+            showingModal(index) {
+                return this.selected_modal === ('Modal' + index);
+            },
+            close() {
+                this.selected_modal = '';
+            },
+            deleteAppliedJob(job_id) {
+                // delete the application from the list above and from database
+                this.selected_modal = '';
+                this.applied_jobs = this.applied_jobs.filter(
+                    job => {
+                        return job.applied_job_id !== job_id
+                    }
+                );
             }
         }
     })
 </script>
 
 <style scoped>
+.applied-container{
+    grid-template-columns: repeat(auto-fit, 370px);
+}
+.modal {
+    background-color: rgba(0, 0, 0, 0.75);
+}
 
+.confirmation_modal-enter-active,
+.confirmation_modal-leave-active {
+  transition: opacity 0.4s ease;
+}
+
+.confirmation_modal-enter,
+.confirmation_modal-leave-to {
+  opacity: 0;
+}
 </style>
