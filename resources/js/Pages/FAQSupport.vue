@@ -24,6 +24,7 @@
             </div>
         </div>
 
+        <template v-if="$page.props.user">
         <!-- Job management questions -->
         <div class="lg:max-w-6xl lg:mx-auto mx-4 mt-10" v-if="$page.props.user.current_team_id==2">
             <h1 class="text-3xl text-center font-bold">About job managements</h1>
@@ -61,6 +62,7 @@
                 </div>
             </div>
         </div>
+        </template>
 
         <!-- Account questions -->
         <div class="lg:max-w-6xl lg:mx-auto mx-4 my-10">
