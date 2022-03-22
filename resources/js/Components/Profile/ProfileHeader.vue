@@ -1,14 +1,13 @@
 <template>
 	<!-- Recruiter -->
     <div v-if="$page.props.selectedUser[0].current_team_id == 2" class="w-full rounded-lg lg:rounded-l-lg lg:rounded-r-none mx-auto lg:mx-0">
-			
-        <div class="h-36 lg:h-52 block bg-cover" style="background-color: #90d5ec; background-image: linear-gradient(315deg, #90d5ec 0%, #fc575e 74%);">
-			<font-awesome-icon v-if="$page.props.selectedUser[0].verified == true" :icon="verifiedIcon" />
+		<div v-if="$page.props.selectedUser[0].cover_image_url" class="h-36 lg:h-52 block bg-cover bg-center" :style="{'background-image': 'url('+$page.props.selectedUser[0].cover_image_url+')'}"></div>
+        <div v-else class="h-36 lg:h-52 block bg-cover" style="background-color: #90d5ec; background-image: linear-gradient(315deg, #90d5ec 0%, #fc575e 74%);">
 		</div>
 		<div class="lg:ml-20 xl:ml-40 p-4 mb-14 text-center lg:text-left">
             
 			<!-- Image for mobile view-->
-			<div class="block rounded-full shadow-xl mx-auto -mt-28 h-48 w-48 bg-cover bg-center lg:bg-left lg:mx-0 lg:mb-16" :style="{'background-image': 'url('+$page.props.selectedUser[0].profile_photo_url+')'}"></div>
+			<div class="block rounded-full shadow-xl mx-auto -mt-28 h-48 w-48 bg-cover bg-center lg:mx-0 lg:mb-16" :style="{'background-image': 'url('+$page.props.selectedUser[0].profile_photo_url+')'}"></div>
 
 			<template v-if="$page.props.user != null">
 			<a v-if="$page.props.selectedUser[0].id == $page.props.user.id" :href="route('profile.show')" class="float-right -mt-32 lg:mr-96 lg:-mt-48 pt-12 pb-8">

@@ -12,7 +12,7 @@
             </a>
             <a target="_blank" :href="$page.props.selectedUser[0].url"  class="ml-6 lg:ml-10 mt-8 border-pink-300 border-l-8 py-4 rounded-l-sm text-lg pt-2 flex items-center justify-start hover:scale-105 transition duration-500 cursor-pointer" >
                 <font-awesome-icon class=" text-xl align-middle ml-8" :icon="desktopIcon" />
-                <p class="text-md align-middle ml-6">{{ ($page.props.selectedUser[0].url) ? $page.props.selectedUser[0].url : "None" }}</p>
+                <p class="text-md align-middle ml-6">{{ ($page.props.selectedUser[0].url) ? $page.props.selectedUser[0].name : "None" }}</p>
             </a>
         </div>
     </div> 

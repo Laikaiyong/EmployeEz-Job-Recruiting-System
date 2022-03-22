@@ -27,7 +27,7 @@
                         v-else 
                         src="/img/EmployeEz banner.png"
                         class="w-full h-2/5 my-auto object-cover rounded-t-3xl"
-                        style="max-height: 125px;">
+                        style="max-height: 125px; height: 125px;">
                     </div>
                     <div class="w-full basis-2/5 my-auto">
                         <div class="mx-4 mb-4 px-4 my-4">

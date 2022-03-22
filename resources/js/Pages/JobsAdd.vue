@@ -113,7 +113,7 @@
 
                         <div class="flex justify-center mt-4">
                             <div class="mb-3 w-72 xl:w-96">
-                                <jet-label for="experience_level" class="inline-block mb-2 text-gray-700 font-bold" value="Duration" />
+                                <jet-label for="experience_level" class="inline-block mb-2 text-gray-700 font-bold" value="Level" />
                                 <select 
                                 class="appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" 
                                 name="experience_level"

@@ -118,36 +118,452 @@ class JobSeeder extends Seeder
             'updated_at' => date(format: 'Y-m-d H:i:s')
         ]);
 
-        DB::table('job_posts')->insert([
-            'title' => 'Consultant', 
-            'description' => 'Identify sales and new business opportunities to secure new customers.
-            Continuously engage with existing customers and maintain a high level of sales achievement.
-            Develop and follow up on all sales lead to achieve sales target/quotas, this include presenting ideas to potential clients, negotiating, listening to their wishes and concerns and closing deals.
-            Advertise, attend to inquiries or complaints, recommend solutions and provide support to customers as and when required.
-            Gain a clear understanding of customers’ businesses and requirements to identify best market opportunities and trends
-            Keep abreast on the market trends, opportunities and threats, including competitions, and contribute positively through relevant initiatives e.g. marketing campaigns etc.
-            Collate data & produce reports for tracking and review purposes as and when required.
-            Perform any other ad-hoc tasks / duties as and when required.',
-            'requirement' => 'Candidate must possess at least a Diploma in any field.
-            Minimum 1-2 years of sales experience. Candidate with working experience in remittance/ banking/ shipping industry will be prioritized.
-            Required language(s): English, Bahasa Malaysia. Mandarin will be an added advantage.
-            Possess own transport, willing to travel and able to work outstation occasionally.
-            Proficient in Microsoft Office tools such as Word, Excel and PowerPoint.
-            Able to multi-task and work under pressure with minimum supervision
-            Results oriented, resourceful and proactive with a strong urgency to achieve desired results.
-            Team player with excellent interpersonal and communication skills.',
-            'type' => 'Full-time',
-            'location' => 'Selangor',
-            'experience_level' => "Beginner",
-            'user_id' => 6,
-            'company' => 'Sunway',
-            'industry' => 'Business',
-            'beneficial_skills' => '2 years work experience
-            ',
-            'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
-            'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
-        ]);
+    //     DB::table('job_posts')->insert([
+    //         'title' => 'Consultant', 
+    //         'description' => 'Identify sales and new business opportunities to secure new customers.
+    //         Continuously engage with existing customers and maintain a high level of sales achievement.
+    //         Develop and follow up on all sales lead to achieve sales target/quotas, this include presenting ideas to potential clients, negotiating, listening to their wishes and concerns and closing deals.
+    //         Advertise, attend to inquiries or complaints, recommend solutions and provide support to customers as and when required.
+    //         Gain a clear understanding of customers’ businesses and requirements to identify best market opportunities and trends
+    //         Keep abreast on the market trends, opportunities and threats, including competitions, and contribute positively through relevant initiatives e.g. marketing campaigns etc.
+    //         Collate data & produce reports for tracking and review purposes as and when required.
+    //         Perform any other ad-hoc tasks / duties as and when required.',
+    //         'requirement' => 'Candidate must possess at least a Diploma in any field.
+    //         Minimum 1-2 years of sales experience. Candidate with working experience in remittance/ banking/ shipping industry will be prioritized.
+    //         Required language(s): English, Bahasa Malaysia. Mandarin will be an added advantage.
+    //         Possess own transport, willing to travel and able to work outstation occasionally.
+    //         Proficient in Microsoft Office tools such as Word, Excel and PowerPoint.
+    //         Able to multi-task and work under pressure with minimum supervision
+    //         Results oriented, resourceful and proactive with a strong urgency to achieve desired results.
+    //         Team player with excellent interpersonal and communication skills.',
+    //         'type' => 'Full-time',
+    //         'location' => 'Selangor',
+    //         'experience_level' => "Beginner",
+    //         'user_id' => 6,
+    //         'company' => 'Sunway',
+    //         'industry' => 'Business',
+    //         'beneficial_skills' => '2 years work experience
+    //         ',
+    //         'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
+    //         'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
+    //         'created_at' => date(format: 'Y-m-d H:i:s'),
+    //         'updated_at' => date(format: 'Y-m-d H:i:s')
+    //     ]);
+
+    //     DB::table('job_posts')->insert([
+    //         'title' => 'Consultant', 
+    //         'description' => 'Identify sales and new business opportunities to secure new customers.
+    //         Continuously engage with existing customers and maintain a high level of sales achievement.
+    //         Develop and follow up on all sales lead to achieve sales target/quotas, this include presenting ideas to potential clients, negotiating, listening to their wishes and concerns and closing deals.
+    //         Advertise, attend to inquiries or complaints, recommend solutions and provide support to customers as and when required.
+    //         Gain a clear understanding of customers’ businesses and requirements to identify best market opportunities and trends
+    //         Keep abreast on the market trends, opportunities and threats, including competitions, and contribute positively through relevant initiatives e.g. marketing campaigns etc.
+    //         Collate data & produce reports for tracking and review purposes as and when required.
+    //         Perform any other ad-hoc tasks / duties as and when required.',
+    //         'requirement' => 'Candidate must possess at least a Diploma in any field.
+    //         Minimum 1-2 years of sales experience. Candidate with working experience in remittance/ banking/ shipping industry will be prioritized.
+    //         Required language(s): English, Bahasa Malaysia. Mandarin will be an added advantage.
+    //         Possess own transport, willing to travel and able to work outstation occasionally.
+    //         Proficient in Microsoft Office tools such as Word, Excel and PowerPoint.
+    //         Able to multi-task and work under pressure with minimum supervision
+    //         Results oriented, resourceful and proactive with a strong urgency to achieve desired results.
+    //         Team player with excellent interpersonal and communication skills.',
+    //         'type' => 'Full-time',
+    //         'location' => 'Selangor',
+    //         'experience_level' => "Beginner",
+    //         'user_id' => 6,
+    //         'company' => 'Sunway',
+    //         'industry' => 'Business',
+    //         'beneficial_skills' => '2 years work experience
+    //         ',
+    //         'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
+    //         'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
+    //         'created_at' => date(format: 'Y-m-d H:i:s'),
+    //         'updated_at' => date(format: 'Y-m-d H:i:s')
+    //     ]);
+
+    //     DB::table('job_posts')->insert([
+    //         'title' => 'Consultant', 
+    //         'description' => 'Identify sales and new business opportunities to secure new customers.
+    //         Continuously engage with existing customers and maintain a high level of sales achievement.
+    //         Develop and follow up on all sales lead to achieve sales target/quotas, this include presenting ideas to potential clients, negotiating, listening to their wishes and concerns and closing deals.
+    //         Advertise, attend to inquiries or complaints, recommend solutions and provide support to customers as and when required.
+    //         Gain a clear understanding of customers’ businesses and requirements to identify best market opportunities and trends
+    //         Keep abreast on the market trends, opportunities and threats, including competitions, and contribute positively through relevant initiatives e.g. marketing campaigns etc.
+    //         Collate data & produce reports for tracking and review purposes as and when required.
+    //         Perform any other ad-hoc tasks / duties as and when required.',
+    //         'requirement' => 'Candidate must possess at least a Diploma in any field.
+    //         Minimum 1-2 years of sales experience. Candidate with working experience in remittance/ banking/ shipping industry will be prioritized.
+    //         Required language(s): English, Bahasa Malaysia. Mandarin will be an added advantage.
+    //         Possess own transport, willing to travel and able to work outstation occasionally.
+    //         Proficient in Microsoft Office tools such as Word, Excel and PowerPoint.
+    //         Able to multi-task and work under pressure with minimum supervision
+    //         Results oriented, resourceful and proactive with a strong urgency to achieve desired results.
+    //         Team player with excellent interpersonal and communication skills.',
+    //         'type' => 'Full-time',
+    //         'location' => 'Selangor',
+    //         'experience_level' => "Beginner",
+    //         'user_id' => 6,
+    //         'company' => 'Sunway',
+    //         'industry' => 'Business',
+    //         'beneficial_skills' => '2 years work experience
+    //         ',
+    //         'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
+    //         'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
+    //         'created_at' => date(format: 'Y-m-d H:i:s'),
+    //         'updated_at' => date(format: 'Y-m-d H:i:s')
+    //     ]);
+
+    //     DB::table('job_posts')->insert([
+    //         'title' => 'Consultant', 
+    //         'description' => 'Identify sales and new business opportunities to secure new customers.
+    //         Continuously engage with existing customers and maintain a high level of sales achievement.
+    //         Develop and follow up on all sales lead to achieve sales target/quotas, this include presenting ideas to potential clients, negotiating, listening to their wishes and concerns and closing deals.
+    //         Advertise, attend to inquiries or complaints, recommend solutions and provide support to customers as and when required.
+    //         Gain a clear understanding of customers’ businesses and requirements to identify best market opportunities and trends
+    //         Keep abreast on the market trends, opportunities and threats, including competitions, and contribute positively through relevant initiatives e.g. marketing campaigns etc.
+    //         Collate data & produce reports for tracking and review purposes as and when required.
+    //         Perform any other ad-hoc tasks / duties as and when required.',
+    //         'requirement' => 'Candidate must possess at least a Diploma in any field.
+    //         Minimum 1-2 years of sales experience. Candidate with working experience in remittance/ banking/ shipping industry will be prioritized.
+    //         Required language(s): English, Bahasa Malaysia. Mandarin will be an added advantage.
+    //         Possess own transport, willing to travel and able to work outstation occasionally.
+    //         Proficient in Microsoft Office tools such as Word, Excel and PowerPoint.
+    //         Able to multi-task and work under pressure with minimum supervision
+    //         Results oriented, resourceful and proactive with a strong urgency to achieve desired results.
+    //         Team player with excellent interpersonal and communication skills.',
+    //         'type' => 'Full-time',
+    //         'location' => 'Selangor',
+    //         'experience_level' => "Beginner",
+    //         'user_id' => 6,
+    //         'company' => 'Sunway',
+    //         'industry' => 'Business',
+    //         'beneficial_skills' => '2 years work experience
+    //         ',
+    //         'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
+    //         'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
+    //         'created_at' => date(format: 'Y-m-d H:i:s'),
+    //         'updated_at' => date(format: 'Y-m-d H:i:s')
+    //     ]);
+
+    //     DB::table('job_posts')->insert([
+    //         'title' => 'Consultant', 
+    //         'description' => 'Identify sales and new business opportunities to secure new customers.
+    //         Continuously engage with existing customers and maintain a high level of sales achievement.
+    //         Develop and follow up on all sales lead to achieve sales target/quotas, this include presenting ideas to potential clients, negotiating, listening to their wishes and concerns and closing deals.
+    //         Advertise, attend to inquiries or complaints, recommend solutions and provide support to customers as and when required.
+    //         Gain a clear understanding of customers’ businesses and requirements to identify best market opportunities and trends
+    //         Keep abreast on the market trends, opportunities and threats, including competitions, and contribute positively through relevant initiatives e.g. marketing campaigns etc.
+    //         Collate data & produce reports for tracking and review purposes as and when required.
+    //         Perform any other ad-hoc tasks / duties as and when required.',
+    //         'requirement' => 'Candidate must possess at least a Diploma in any field.
+    //         Minimum 1-2 years of sales experience. Candidate with working experience in remittance/ banking/ shipping industry will be prioritized.
+    //         Required language(s): English, Bahasa Malaysia. Mandarin will be an added advantage.
+    //         Possess own transport, willing to travel and able to work outstation occasionally.
+    //         Proficient in Microsoft Office tools such as Word, Excel and PowerPoint.
+    //         Able to multi-task and work under pressure with minimum supervision
+    //         Results oriented, resourceful and proactive with a strong urgency to achieve desired results.
+    //         Team player with excellent interpersonal and communication skills.',
+    //         'type' => 'Full-time',
+    //         'location' => 'Selangor',
+    //         'experience_level' => "Beginner",
+    //         'user_id' => 6,
+    //         'company' => 'Sunway',
+    //         'industry' => 'Business',
+    //         'beneficial_skills' => '2 years work experience
+    //         ',
+    //         'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
+    //         'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
+    //         'created_at' => date(format: 'Y-m-d H:i:s'),
+    //         'updated_at' => date(format: 'Y-m-d H:i:s')
+    //     ]);
+
+    //     DB::table('job_posts')->insert([
+    //         'title' => 'Consultant', 
+    //         'description' => 'Identify sales and new business opportunities to secure new customers.
+    //         Continuously engage with existing customers and maintain a high level of sales achievement.
+    //         Develop and follow up on all sales lead to achieve sales target/quotas, this include presenting ideas to potential clients, negotiating, listening to their wishes and concerns and closing deals.
+    //         Advertise, attend to inquiries or complaints, recommend solutions and provide support to customers as and when required.
+    //         Gain a clear understanding of customers’ businesses and requirements to identify best market opportunities and trends
+    //         Keep abreast on the market trends, opportunities and threats, including competitions, and contribute positively through relevant initiatives e.g. marketing campaigns etc.
+    //         Collate data & produce reports for tracking and review purposes as and when required.
+    //         Perform any other ad-hoc tasks / duties as and when required.',
+    //         'requirement' => 'Candidate must possess at least a Diploma in any field.
+    //         Minimum 1-2 years of sales experience. Candidate with working experience in remittance/ banking/ shipping industry will be prioritized.
+    //         Required language(s): English, Bahasa Malaysia. Mandarin will be an added advantage.
+    //         Possess own transport, willing to travel and able to work outstation occasionally.
+    //         Proficient in Microsoft Office tools such as Word, Excel and PowerPoint.
+    //         Able to multi-task and work under pressure with minimum supervision
+    //         Results oriented, resourceful and proactive with a strong urgency to achieve desired results.
+    //         Team player with excellent interpersonal and communication skills.',
+    //         'type' => 'Full-time',
+    //         'location' => 'Selangor',
+    //         'experience_level' => "Beginner",
+    //         'user_id' => 6,
+    //         'company' => 'Sunway',
+    //         'industry' => 'Business',
+    //         'beneficial_skills' => '2 years work experience
+    //         ',
+    //         'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
+    //         'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
+    //         'created_at' => date(format: 'Y-m-d H:i:s'),
+    //         'updated_at' => date(format: 'Y-m-d H:i:s')
+    //     ]);
+
+    //     DB::table('job_posts')->insert([
+    //         'title' => 'Consultant', 
+    //         'description' => 'Identify sales and new business opportunities to secure new customers.
+    //         Continuously engage with existing customers and maintain a high level of sales achievement.
+    //         Develop and follow up on all sales lead to achieve sales target/quotas, this include presenting ideas to potential clients, negotiating, listening to their wishes and concerns and closing deals.
+    //         Advertise, attend to inquiries or complaints, recommend solutions and provide support to customers as and when required.
+    //         Gain a clear understanding of customers’ businesses and requirements to identify best market opportunities and trends
+    //         Keep abreast on the market trends, opportunities and threats, including competitions, and contribute positively through relevant initiatives e.g. marketing campaigns etc.
+    //         Collate data & produce reports for tracking and review purposes as and when required.
+    //         Perform any other ad-hoc tasks / duties as and when required.',
+    //         'requirement' => 'Candidate must possess at least a Diploma in any field.
+    //         Minimum 1-2 years of sales experience. Candidate with working experience in remittance/ banking/ shipping industry will be prioritized.
+    //         Required language(s): English, Bahasa Malaysia. Mandarin will be an added advantage.
+    //         Possess own transport, willing to travel and able to work outstation occasionally.
+    //         Proficient in Microsoft Office tools such as Word, Excel and PowerPoint.
+    //         Able to multi-task and work under pressure with minimum supervision
+    //         Results oriented, resourceful and proactive with a strong urgency to achieve desired results.
+    //         Team player with excellent interpersonal and communication skills.',
+    //         'type' => 'Full-time',
+    //         'location' => 'Selangor',
+    //         'experience_level' => "Beginner",
+    //         'user_id' => 6,
+    //         'company' => 'Sunway',
+    //         'industry' => 'Business',
+    //         'beneficial_skills' => '2 years work experience
+    //         ',
+    //         'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
+    //         'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
+    //         'created_at' => date(format: 'Y-m-d H:i:s'),
+    //         'updated_at' => date(format: 'Y-m-d H:i:s')
+    //     ]);
+
+    //     DB::table('job_posts')->insert([
+    //         'title' => 'Consultant', 
+    //         'description' => 'Identify sales and new business opportunities to secure new customers.
+    //         Continuously engage with existing customers and maintain a high level of sales achievement.
+    //         Develop and follow up on all sales lead to achieve sales target/quotas, this include presenting ideas to potential clients, negotiating, listening to their wishes and concerns and closing deals.
+    //         Advertise, attend to inquiries or complaints, recommend solutions and provide support to customers as and when required.
+    //         Gain a clear understanding of customers’ businesses and requirements to identify best market opportunities and trends
+    //         Keep abreast on the market trends, opportunities and threats, including competitions, and contribute positively through relevant initiatives e.g. marketing campaigns etc.
+    //         Collate data & produce reports for tracking and review purposes as and when required.
+    //         Perform any other ad-hoc tasks / duties as and when required.',
+    //         'requirement' => 'Candidate must possess at least a Diploma in any field.
+    //         Minimum 1-2 years of sales experience. Candidate with working experience in remittance/ banking/ shipping industry will be prioritized.
+    //         Required language(s): English, Bahasa Malaysia. Mandarin will be an added advantage.
+    //         Possess own transport, willing to travel and able to work outstation occasionally.
+    //         Proficient in Microsoft Office tools such as Word, Excel and PowerPoint.
+    //         Able to multi-task and work under pressure with minimum supervision
+    //         Results oriented, resourceful and proactive with a strong urgency to achieve desired results.
+    //         Team player with excellent interpersonal and communication skills.',
+    //         'type' => 'Full-time',
+    //         'location' => 'Selangor',
+    //         'experience_level' => "Beginner",
+    //         'user_id' => 6,
+    //         'company' => 'Sunway',
+    //         'industry' => 'Business',
+    //         'beneficial_skills' => '2 years work experience
+    //         ',
+    //         'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
+    //         'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
+    //         'created_at' => date(format: 'Y-m-d H:i:s'),
+    //         'updated_at' => date(format: 'Y-m-d H:i:s')
+    //     ]);
+
+    //     DB::table('job_posts')->insert([
+    //         'title' => 'Consultant', 
+    //         'description' => 'Identify sales and new business opportunities to secure new customers.
+    //         Continuously engage with existing customers and maintain a high level of sales achievement.
+    //         Develop and follow up on all sales lead to achieve sales target/quotas, this include presenting ideas to potential clients, negotiating, listening to their wishes and concerns and closing deals.
+    //         Advertise, attend to inquiries or complaints, recommend solutions and provide support to customers as and when required.
+    //         Gain a clear understanding of customers’ businesses and requirements to identify best market opportunities and trends
+    //         Keep abreast on the market trends, opportunities and threats, including competitions, and contribute positively through relevant initiatives e.g. marketing campaigns etc.
+    //         Collate data & produce reports for tracking and review purposes as and when required.
+    //         Perform any other ad-hoc tasks / duties as and when required.',
+    //         'requirement' => 'Candidate must possess at least a Diploma in any field.
+    //         Minimum 1-2 years of sales experience. Candidate with working experience in remittance/ banking/ shipping industry will be prioritized.
+    //         Required language(s): English, Bahasa Malaysia. Mandarin will be an added advantage.
+    //         Possess own transport, willing to travel and able to work outstation occasionally.
+    //         Proficient in Microsoft Office tools such as Word, Excel and PowerPoint.
+    //         Able to multi-task and work under pressure with minimum supervision
+    //         Results oriented, resourceful and proactive with a strong urgency to achieve desired results.
+    //         Team player with excellent interpersonal and communication skills.',
+    //         'type' => 'Full-time',
+    //         'location' => 'Selangor',
+    //         'experience_level' => "Beginner",
+    //         'user_id' => 6,
+    //         'company' => 'Sunway',
+    //         'industry' => 'Business',
+    //         'beneficial_skills' => '2 years work experience
+    //         ',
+    //         'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
+    //         'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
+    //         'created_at' => date(format: 'Y-m-d H:i:s'),
+    //         'updated_at' => date(format: 'Y-m-d H:i:s')
+    //     ]);
+
+    //     DB::table('job_posts')->insert([
+    //         'title' => 'Consultant', 
+    //         'description' => 'Identify sales and new business opportunities to secure new customers.
+    //         Continuously engage with existing customers and maintain a high level of sales achievement.
+    //         Develop and follow up on all sales lead to achieve sales target/quotas, this include presenting ideas to potential clients, negotiating, listening to their wishes and concerns and closing deals.
+    //         Advertise, attend to inquiries or complaints, recommend solutions and provide support to customers as and when required.
+    //         Gain a clear understanding of customers’ businesses and requirements to identify best market opportunities and trends
+    //         Keep abreast on the market trends, opportunities and threats, including competitions, and contribute positively through relevant initiatives e.g. marketing campaigns etc.
+    //         Collate data & produce reports for tracking and review purposes as and when required.
+    //         Perform any other ad-hoc tasks / duties as and when required.',
+    //         'requirement' => 'Candidate must possess at least a Diploma in any field.
+    //         Minimum 1-2 years of sales experience. Candidate with working experience in remittance/ banking/ shipping industry will be prioritized.
+    //         Required language(s): English, Bahasa Malaysia. Mandarin will be an added advantage.
+    //         Possess own transport, willing to travel and able to work outstation occasionally.
+    //         Proficient in Microsoft Office tools such as Word, Excel and PowerPoint.
+    //         Able to multi-task and work under pressure with minimum supervision
+    //         Results oriented, resourceful and proactive with a strong urgency to achieve desired results.
+    //         Team player with excellent interpersonal and communication skills.',
+    //         'type' => 'Full-time',
+    //         'location' => 'Selangor',
+    //         'experience_level' => "Beginner",
+    //         'user_id' => 6,
+    //         'company' => 'Sunway',
+    //         'industry' => 'Business',
+    //         'beneficial_skills' => '2 years work experience
+    //         ',
+    //         'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
+    //         'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
+    //         'created_at' => date(format: 'Y-m-d H:i:s'),
+    //         'updated_at' => date(format: 'Y-m-d H:i:s')
+    //     ]);
+
+    //     DB::table('job_posts')->insert([
+    //         'title' => 'Consultant', 
+    //         'description' => 'Identify sales and new business opportunities to secure new customers.
+    //         Continuously engage with existing customers and maintain a high level of sales achievement.
+    //         Develop and follow up on all sales lead to achieve sales target/quotas, this include presenting ideas to potential clients, negotiating, listening to their wishes and concerns and closing deals.
+    //         Advertise, attend to inquiries or complaints, recommend solutions and provide support to customers as and when required.
+    //         Gain a clear understanding of customers’ businesses and requirements to identify best market opportunities and trends
+    //         Keep abreast on the market trends, opportunities and threats, including competitions, and contribute positively through relevant initiatives e.g. marketing campaigns etc.
+    //         Collate data & produce reports for tracking and review purposes as and when required.
+    //         Perform any other ad-hoc tasks / duties as and when required.',
+    //         'requirement' => 'Candidate must possess at least a Diploma in any field.
+    //         Minimum 1-2 years of sales experience. Candidate with working experience in remittance/ banking/ shipping industry will be prioritized.
+    //         Required language(s): English, Bahasa Malaysia. Mandarin will be an added advantage.
+    //         Possess own transport, willing to travel and able to work outstation occasionally.
+    //         Proficient in Microsoft Office tools such as Word, Excel and PowerPoint.
+    //         Able to multi-task and work under pressure with minimum supervision
+    //         Results oriented, resourceful and proactive with a strong urgency to achieve desired results.
+    //         Team player with excellent interpersonal and communication skills.',
+    //         'type' => 'Full-time',
+    //         'location' => 'Selangor',
+    //         'experience_level' => "Beginner",
+    //         'user_id' => 6,
+    //         'company' => 'Sunway',
+    //         'industry' => 'Business',
+    //         'beneficial_skills' => '2 years work experience
+    //         ',
+    //         'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
+    //         'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
+    //         'created_at' => date(format: 'Y-m-d H:i:s'),
+    //         'updated_at' => date(format: 'Y-m-d H:i:s')
+    //     ]);
+
+    //     DB::table('job_posts')->insert([
+    //         'title' => 'Consultant', 
+    //         'description' => 'Identify sales and new business opportunities to secure new customers.
+    //         Continuously engage with existing customers and maintain a high level of sales achievement.
+    //         Develop and follow up on all sales lead to achieve sales target/quotas, this include presenting ideas to potential clients, negotiating, listening to their wishes and concerns and closing deals.
+    //         Advertise, attend to inquiries or complaints, recommend solutions and provide support to customers as and when required.
+    //         Gain a clear understanding of customers’ businesses and requirements to identify best market opportunities and trends
+    //         Keep abreast on the market trends, opportunities and threats, including competitions, and contribute positively through relevant initiatives e.g. marketing campaigns etc.
+    //         Collate data & produce reports for tracking and review purposes as and when required.
+    //         Perform any other ad-hoc tasks / duties as and when required.',
+    //         'requirement' => 'Candidate must possess at least a Diploma in any field.
+    //         Minimum 1-2 years of sales experience. Candidate with working experience in remittance/ banking/ shipping industry will be prioritized.
+    //         Required language(s): English, Bahasa Malaysia. Mandarin will be an added advantage.
+    //         Possess own transport, willing to travel and able to work outstation occasionally.
+    //         Proficient in Microsoft Office tools such as Word, Excel and PowerPoint.
+    //         Able to multi-task and work under pressure with minimum supervision
+    //         Results oriented, resourceful and proactive with a strong urgency to achieve desired results.
+    //         Team player with excellent interpersonal and communication skills.',
+    //         'type' => 'Full-time',
+    //         'location' => 'Selangor',
+    //         'experience_level' => "Beginner",
+    //         'user_id' => 6,
+    //         'company' => 'Sunway',
+    //         'industry' => 'Business',
+    //         'beneficial_skills' => '2 years work experience
+    //         ',
+    //         'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
+    //         'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
+    //         'created_at' => date(format: 'Y-m-d H:i:s'),
+    //         'updated_at' => date(format: 'Y-m-d H:i:s')
+    //     ]);
+
+    //     DB::table('job_posts')->insert([
+    //         'title' => 'Consultant', 
+    //         'description' => 'Identify sales and new business opportunities to secure new customers.
+    //         Continuously engage with existing customers and maintain a high level of sales achievement.
+    //         Develop and follow up on all sales lead to achieve sales target/quotas, this include presenting ideas to potential clients, negotiating, listening to their wishes and concerns and closing deals.
+    //         Advertise, attend to inquiries or complaints, recommend solutions and provide support to customers as and when required.
+    //         Gain a clear understanding of customers’ businesses and requirements to identify best market opportunities and trends
+    //         Keep abreast on the market trends, opportunities and threats, including competitions, and contribute positively through relevant initiatives e.g. marketing campaigns etc.
+    //         Collate data & produce reports for tracking and review purposes as and when required.
+    //         Perform any other ad-hoc tasks / duties as and when required.',
+    //         'requirement' => 'Candidate must possess at least a Diploma in any field.
+    //         Minimum 1-2 years of sales experience. Candidate with working experience in remittance/ banking/ shipping industry will be prioritized.
+    //         Required language(s): English, Bahasa Malaysia. Mandarin will be an added advantage.
+    //         Possess own transport, willing to travel and able to work outstation occasionally.
+    //         Proficient in Microsoft Office tools such as Word, Excel and PowerPoint.
+    //         Able to multi-task and work under pressure with minimum supervision
+    //         Results oriented, resourceful and proactive with a strong urgency to achieve desired results.
+    //         Team player with excellent interpersonal and communication skills.',
+    //         'type' => 'Full-time',
+    //         'location' => 'Selangor',
+    //         'experience_level' => "Beginner",
+    //         'user_id' => 6,
+    //         'company' => 'Sunway',
+    //         'industry' => 'Business',
+    //         'beneficial_skills' => '2 years work experience
+    //         ',
+    //         'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
+    //         'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
+    //         'created_at' => date(format: 'Y-m-d H:i:s'),
+    //         'updated_at' => date(format: 'Y-m-d H:i:s')
+    //     ]);
+
+    //     DB::table('job_posts')->insert([
+    //         'title' => 'Consultant', 
+    //         'description' => 'Identify sales and new business opportunities to secure new customers.
+    //         Continuously engage with existing customers and maintain a high level of sales achievement.
+    //         Develop and follow up on all sales lead to achieve sales target/quotas, this include presenting ideas to potential clients, negotiating, listening to their wishes and concerns and closing deals.
+    //         Advertise, attend to inquiries or complaints, recommend solutions and provide support to customers as and when required.
+    //         Gain a clear understanding of customers’ businesses and requirements to identify best market opportunities and trends
+    //         Keep abreast on the market trends, opportunities and threats, including competitions, and contribute positively through relevant initiatives e.g. marketing campaigns etc.
+    //         Collate data & produce reports for tracking and review purposes as and when required.
+    //         Perform any other ad-hoc tasks / duties as and when required.',
+    //         'requirement' => 'Candidate must possess at least a Diploma in any field.
+    //         Minimum 1-2 years of sales experience. Candidate with working experience in remittance/ banking/ shipping industry will be prioritized.
+    //         Required language(s): English, Bahasa Malaysia. Mandarin will be an added advantage.
+    //         Possess own transport, willing to travel and able to work outstation occasionally.
+    //         Proficient in Microsoft Office tools such as Word, Excel and PowerPoint.
+    //         Able to multi-task and work under pressure with minimum supervision
+    //         Results oriented, resourceful and proactive with a strong urgency to achieve desired results.
+    //         Team player with excellent interpersonal and communication skills.',
+    //         'type' => 'Full-time',
+    //         'location' => 'Selangor',
+    //         'experience_level' => "Beginner",
+    //         'user_id' => 6,
+    //         'company' => 'Sunway',
+    //         'industry' => 'Business',
+    //         'beneficial_skills' => '2 years work experience
+    //         ',
+    //         'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
+    //         'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
+    //         'created_at' => date(format: 'Y-m-d H:i:s'),
+    //         'updated_at' => date(format: 'Y-m-d H:i:s')
+    //     ]);
     }
 }
