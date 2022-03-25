@@ -21,7 +21,7 @@
 
                         <a :href="route('user.profile', {id: $page.props.user.id, name: $page.props.user.name})" class="lg:basis-1/3 flex justify-center">
                             <button type="button" 
-                            class="inline-block px-8 py-2.5 lg:py-4 bg-blue-700 text-white font-medium text-base leading-tight uppercase rounded-3xl lg:rounded-lg shadow-md hover:bg-blue-800 hover:shadow-lg focus:bg-blue-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out">
+                            class="inline-block px-8 py-2.5 lg:py-4 bg-blue-700 text-white font-medium text-base leading-tight rounded-3xl lg:rounded-lg shadow-md hover:bg-blue-800 hover:shadow-lg focus:bg-blue-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out">
                             Edit Profile</button>
                         </a>
                     </div>
@@ -74,7 +74,7 @@
 
                                 <label 
                                 for="upload_resume"
-                                class="inline-block px-6 py-2.5 mt-4 w-48 bg-blue-700 text-white font-medium text-xs text-center leading-tight uppercase rounded-3xl shadow-md hover:bg-blue-800 hover:shadow-lg focus:bg-blue-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out">
+                                class="inline-block px-6 py-2.5 mt-4 w-48 bg-blue-700 text-white font-medium text-xs text-center leading-tight rounded-3xl shadow-md hover:bg-blue-800 hover:shadow-lg focus:bg-blue-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out">
                                 Upload Resume
                                 </label>
 
@@ -101,7 +101,7 @@
 
             <div class="lg:max-w-6xl lg:mx-auto pb-6 mx-8 mb-6 flex justify-center lg:justify-end">
                 <jet-button type="submit" 
-                class="inline-block px-8 py-2.5 bg-blue-700 text-white font-bold text-base leading-tight uppercase rounded-3xl shadow-md hover:bg-blue-800 hover:shadow-lg focus:bg-blue-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out"
+                class="inline-block px-8 py-2.5 bg-blue-700 text-white font-bold text-base leading-tight rounded-3xl shadow-md hover:bg-blue-800 hover:shadow-lg focus:bg-blue-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out"
                 :class="{ 'opacity-25': form.processing }" 
                 :disabled="form.processing">
                 Submit</jet-button>
