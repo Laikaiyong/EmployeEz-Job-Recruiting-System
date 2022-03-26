@@ -1,5 +1,5 @@
 <template>
-    <div class="h-[2000px] lg:h-[1000px] container  mx-auto my-5 p-5">
+    <div class="h-[2230px] sm:h-[2150px] lg:h-[1500px] xl:h-[1300px] container  mx-auto my-5 p-5">
         <div class="lg:ml-10 xl:ml-20 lg:flex wrap">
             <!-- Left Side -->
             <div class="w-full xl:w-4/12">
@@ -7,7 +7,8 @@
                 <div class="bg-white p-3 border-green-400">
                     <div class="image overflow-hidden">
                         <img v-if="$page.props.selectedJob.cover_image_url" 
-                        class="h-auto w-full mx-auto"
+                        class="h-auto max-h-[214.84px] w-full mx-auto"
+                        style="object-fit: cover;"
                         :src="$page.props.selectedJob.cover_image_url"
                         alt="">
                         <img v-else
@@ -176,8 +177,43 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- End of Experience and education grid -->
+                    <!-- End of Lat section grid -->
                 </div>
+                    <template v-if="$page.props.user">
+                        <a
+                        v-if="$page.props.user.id == $page.props.selectedJob.user_id"
+                        :href="route('jobs.edit', {'id': $page.props.selectedJob.id})"
+                        class="flex mt-6 justify-center items-center">
+                            <button
+                            type="button"
+                            class="bg-indigo-600 hover:bg-indigo-700 text-base text-center text-white font-bold rounded-xl shadow-md px-8 py-2">
+                            Edit
+                            </button>
+                        </a>
+                        <a
+                        v-else
+                        :href="route('jobs.apply', {'id': $page.props.selectedJob.id})"
+                        class="flex mt-6 justify-center items-center"
+                        >
+                            <button
+                            type="button"
+                            class="bg-indigo-600 hover:bg-indigo-700 text-base text-center text-white font-bold rounded-xl shadow-md px-8 py-2">
+                            Apply
+                            </button>
+                        </a>
+                    </template>
+                    <template v-else>
+                        <a 
+                        :href="route('jobs.apply', {'id': $page.props.selectedJob.id})"
+                        class="flex mt-6 justify-center items-center"
+                        >
+                            <button
+                            type="button"
+                            class="bg-indigo-600 hover:bg-indigo-700 text-base text-center text-white font-bold rounded-xl shadow-md px-8 py-2">
+                            Apply
+                            </button>
+                        </a>
+                    </template>
                 <!-- End of profile tab -->
             </div>
         </div>

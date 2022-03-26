@@ -13,6 +13,7 @@ use App\Http\Controllers\ApplicationController;
 
 use App\Models\User;
 use App\Models\JobPost;
+use App\Models\Application as Apply;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,7 +38,7 @@ Route::get('/', function () {
                         ->limit(3)
                         ->get()
     ]);
-});
+})->name('root');
 
 // Socialite Login
 Route::prefix('google')->name('google.')->group( function(){
@@ -71,7 +72,81 @@ Route::get('/support', function () {
 
 // Admin Deshboard View
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard', [
+        'applications' => Apply::select('*')
+                            ->get(),
+        'jobs' => JobPost::select('*')
+                    ->get(),
+        'totalCompanies' => User::select('*')
+                        ->where('current_team_id', 2)
+                        ->count(),
+        'totalSeekers' => User::select('*')
+                        ->where('current_team_id', 3)
+                        ->count(),
+        'totalAdmin' => User::select('*')
+                        ->where('current_team_id', 1)
+                        ->count(),
+        'totalJobs' => JobPost::select('*')
+                          ->count(),
+        'totalApply' => Apply::select('*')
+                          ->count(),
+        'februaryJobs' => JobPost::select('*')
+                          ->where('created_at', 'LIKE', '%-02-%')
+                          ->count(),
+        'marchJobs' => JobPost::select('*')
+                          ->where('created_at', 'LIKE', '%-03-%')
+                          ->count(),
+        'aprilJobs' => JobPost::select('*')
+                          ->where('created_at', 'LIKE', '%-04-%')
+                          ->count(),
+        'februaryApply' => Apply::select('*')
+                          ->where('created_at', 'LIKE', '%-02-%')
+                          ->count(),
+        'marchApply' => Apply::select('*')
+                          ->where('created_at', 'LIKE', '%-03-%')
+                          ->count(),
+        'aprilApply' => Apply::select('*')
+                          ->where('created_at', 'LIKE', '%-04-%')
+                          ->count(),
+        'fullTimeJobs' => JobPost::select('*')
+                            ->where('type', 'Full-time')
+                            ->count(),
+        'partTimeJobs' => JobPost::select('*')
+                            ->where('type', 'Part-time')
+                            ->count(),
+        'internshipJobs' => JobPost::select('*')
+                            ->where('type', 'Internship')
+                            ->count(),
+        'contractJobs' => JobPost::select('*')
+                            ->where('type', 'Contract')
+                            ->count(),
+        'fullTimeApply' => Apply::select('*')
+                            ->where('jobpost_type', 'Full-time')
+                            ->count(),
+        'partTimeApply' => Apply::select('*')
+                            ->where('jobpost_type', 'Part-time')
+                            ->count(),
+        'internshipApply' => Apply::select('*')
+                            ->where('jobpost_type', 'Internship')
+                            ->count(),
+        'contractApply' => Apply::select('*')
+                            ->where('jobpost_type', 'Contract')
+                            ->count(),
+        'techCompanies' => User::select('*')
+                            ->where('type', 'Technology')
+                            ->count(),
+        'financeCompanies' => User::select('*')
+                            ->where('type', 'Finance')
+                            ->count(),
+        'engineeringCompanies' => User::select('*')
+                            ->where('type', 'Engineering')
+                            ->count(),
+        'otherCompanies' => User::select('*')
+                            ->where('type', '!=', 'Technology')
+                            ->where('type', '!=', 'Finance')
+                            ->where('type', '!=', 'Engineering')
+                            ->count(),
+    ]);
 })->name('dashboard');
 
 Route::get('/jobs', function (Request $request) {
@@ -83,13 +158,15 @@ Route::get('/jobs', function (Request $request) {
                 ->when($request->keyword, 
                     function($query, $keyword) {
                         $query->where('title', 'LIKE', '%' .$keyword.'%');      
-        })->paginate(9)
+        })->paginate(6)
     ]);
 })->name('jobs');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/applied', function(){
-    return Inertia::render('JobsApplyList', []);
+    return Inertia::render('JobsApplyList', [
+        'applied_jobs' => Apply::select('*')->orderBy('id', 'desc')->get(),
+    ]);
 })->name('jobs.applied');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/add', function () {
@@ -98,7 +175,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/add', function () {
 Route::post('/jobs/add', 'JobPostingController@store');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/created', function () {
-    return Inertia::render('JobsCreated');
+    return Inertia::render('JobsCreated', [
+        'created_jobs' => JobPost::select('*')->orderBy('id', 'desc')->get()
+    ]);
 })->name('jobs.created');
 
 Route::get('/jobs/{id}', function($id){
@@ -112,6 +191,12 @@ Route::get('/jobs/{id}', function($id){
                         ->get(),
     ]);
 })->where(['id' => '[0-9]+'])->name('jobs.profile');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/{id}/edit', function($id){
+    return Inertia::render('JobsEdit', [
+        'selectedJob' => JobPost::where('id', $id)->first()
+    ]);
+})->where(['id' => '[0-9]+'])->name('jobs.edit');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/{id}/apply', function ($id) {
     return Inertia::render('ApplicationRequest', [
@@ -137,7 +222,7 @@ Route::get('/company', function (Request $request) {
                         ->when($request->keyword, 
                             function($query, $keyword) {
                                 $query->where('name', 'LIKE', '%' .$keyword.'%');      
-        })->paginate(9)
+        })->paginate(6)
     ]);
 })->name('company');
 

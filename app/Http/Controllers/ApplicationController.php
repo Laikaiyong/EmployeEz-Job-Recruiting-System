@@ -33,6 +33,13 @@ class ApplicationController extends Controller
             'jobpostid' => ['required'],
             'user_id' => ['required'],
             'user_name' => ['required'],
+            'jobpost_title' => ['required'],
+            'jobpost_cover' => ['required'],
+            'jobpost_location' => ['required'],
+            'jobpost_industry' => ['required'],
+            'company_name' => ['required'],
+            'jobpost_type' => ['required'],
+            'company_id' => ['required'],
             'additional_comments' => ['nullable', 'max:1024']
         ])->validate();
   
@@ -41,12 +48,18 @@ class ApplicationController extends Controller
         $resume_path = $request->file('resume')->store($resume_name, 'public');
         $resume_exact_path = 'http://127.0.0.1:8000/storage/'.$resume_path;
 
-
         Application::create([
             'resume' => $resume_exact_path,
             'jobpostid' => $request->input('jobpostid'),
             'user_id' => $request->input('user_id'),
             'user_name' => $request->input('user_name'),
+            'jobpost_title' => $request->input('jobpost_title'),
+            'jobpost_cover' => $request->input('jobpost_cover'),
+            'jobpost_location' => $request->input('jobpost_location'),
+            'jobpost_industry' => $request->input('jobpost_industry'),
+            'company_name' => $request->input('company_name'),
+            'jobpost_type' => $request->input('jobpost_type'),
+            'company_id' => $request->input('company_id'),
             'additional_comments' => $request->input('additional_comments'),
         ]);
   
@@ -54,26 +67,6 @@ class ApplicationController extends Controller
     }
   
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function update(Request $request)
-    {
-        Validator::make($request->all(), [
-            'resume' => ['required'],
-            'jobpostid' => ['required'],
-            'user_id' => ['required']
-        ])->validate();
-  
-        if ($request->has('id')) {
-            Application::find($request->input('id'))->update($request->all());
-            return redirect()->back()
-                    ->with('message', 'Job Post Updated Successfully.');
-        }
-    }
-  
-        /**
      * destroy
      *
      * @param  mixed $id
@@ -84,8 +77,6 @@ class ApplicationController extends Controller
         $post = Application::findOrfail($id);
 
         $post->delete();
-        if($post) {
-            return Redirect::route('application.index')->with('message', 'Data Deleted');
-        }
+        return Redirect::route('root');
     }
 }

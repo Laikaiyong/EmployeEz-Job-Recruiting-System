@@ -1,9 +1,9 @@
 <template>
-    <Head title="Add Jobs"></Head>
+    <Head title="Edit Jobs"></Head>
     <page-header v-if="$page.props.user"></page-header>
 
     <div class="lg:max-w-7xl lg:mx-auto">
-        <h1 class="text-3xl font-bold text-center lg:text-left lg:ml-6 pb-4 mt-4">Add new job</h1>
+        <h1 class="text-3xl font-bold text-center lg:text-left lg:ml-6 pb-4 mt-4">Edit Job: {{ $page.props.selectedJob.title }}</h1>
         <form @submit.prevent="submit">
             <div class="flex flex-col lg:flex-row justify-center mt-4 mb-8">
                 <!-- Left side -->
@@ -20,8 +20,8 @@
                                 <jet-label for="photo" />
 
                                 <!-- Current Profile Photo -->
-                                <div class="mt-2" v-show="! photoPreview">
-                                    <img src="https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg" class="rounded-lg shadow-lg w-60 h-60 bg-white max-w-1/2 my-4">
+                                <div class="mt-2" v-show="!photoPreview">
+                                    <img :src="$page.props.selectedJob.cover_image_url" style="object-fit: cover" class="rounded-lg shadow-lg w-60 h-60 bg-white max-w-1/2 my-4">
                                 </div>
 
                                 <!-- New Profile Photo Preview -->
@@ -49,7 +49,7 @@
                                 <jet-label for="job_title" class="inline-block mb-2 text-gray-700 font-bold" value="Job Title" />
                                 <jet-input class="block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                 id="job_title"
-                                v-model="editing_job.title"
+                                v-model="form.title"
                                 placeholder="Enter job title" autocomplete="position" />
                                 <jet-input-error :message="form.errors.title" class="mt-2" />
                             </div>
@@ -61,7 +61,7 @@
                                 <jet-input type="text"
                                 class="block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                 id="job_location"
-                                v-model="editing_job.location"
+                                v-model="form.location"
                                 placeholder="Enter job location"  autocomplete="state" />
                                 <jet-input-error :message="form.errors.location" class="mt-2" />
                             </div>
@@ -75,7 +75,7 @@
                                 aria-label="Default select example"
                                 name="type"
                                 id="type"
-                                v-model="editing_job.type">
+                                v-model="form.type">
                                     <option value="" selected disabled hidden>Select job type</option>
                                     <option v-for="option in types"
                                     :key="option" :value="option"> {{ option }} </option>
@@ -91,7 +91,7 @@
                                 class="appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" 
                                 name="industry"
                                 id="industry"
-                                v-model="editing_job.industry">
+                                v-model="form.industry">
                                     <option value="" selected disabled hidden>Select job industry</option>
                                     <option v-for="option in industries" :key="option" :value="option"> {{ option }} </option>
                                 </select>
@@ -105,7 +105,7 @@
                                 <jet-input type="text"
                                 class="block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                 id="duration"
-                                v-model="editing_job.duration"
+                                v-model="form.duration"
                                 placeholder="Enter duration (Optional)" />
                                 <jet-input-error :message="form.errors.duration" class="mt-2" />
                             </div>
@@ -118,7 +118,7 @@
                                 class="appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" 
                                 name="experience_level"
                                 id="experience_level"
-                                v-model="editing_job.experience_level">
+                                v-model="form.experience_level">
                                     <option value="" selected disabled hidden>Select Experience Level</option>
                                     <option v-for="option in experiences_level" :key="option" :value="option"> {{ option }} </option>
                                 </select>
@@ -139,7 +139,7 @@
                                 class="appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm h-60" 
                                 id="job_description"
                                 rows="5"
-                                v-model="editing_job.description"
+                                v-model="form.description"
                                 placeholder="Enter job description"></textarea>
                                 <jet-input-error :message="form.errors.description" class="mt-2" />
                             </div>
@@ -152,7 +152,7 @@
                                 class="appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm h-60"
                                 id="job_requirement"
                                 rows="5"
-                                v-model="editing_job.requirement"
+                                v-model="form.requirement"
                                 placeholder="Enter job requirement"></textarea>
                                 <jet-input-error :message="form.errors.requirement" class="mt-2" />
                             </div>
@@ -165,7 +165,7 @@
                                 class="appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm h-60"
                                 id="beneficial_skills"
                                 rows="5"
-                                v-model="editing_job.beneficial_skills"
+                                v-model="form.beneficial_skills"
                                 placeholder="Enter beneficial skills"></textarea>
                                 <jet-input-error :message="form.errors.beneficial_skills" class="mt-2" />
                             </div>
@@ -177,7 +177,7 @@
                                 <jet-input type="text"
                                 class="block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                 id="job_salary"
-                                v-model="editing_job.allowance"
+                                v-model="form.allowance"
                                 placeholder="Enter salary amount (Optional)" />
                                 <jet-input-error :message="form.errors.allowance" class="mt-2" />
                             </div>
@@ -190,7 +190,8 @@
                                 type="date"
                                 class="block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                 id="closing_date"
-                                v-model="editing_job.closing_date"
+                                :value="($page.props.selectedJob.closing_date).slice(0, -9)"
+                                v-model="form.closing_date"
                                 placeholder="Enter application closing date"
                                 autocomplete="date"/>
                                 <jet-input-error :message="form.errors.closing_date" class="mt-2" />
@@ -266,39 +267,24 @@
                     'Intermediate',
                     'Advanced'
                 ],
-                editing_job: {
-                    // selected job for editing
-                    title: 'Software Engineer',
-                    location: 'Kuala Lumpur',
-                    type: 'Full-time',
-                    industry: 'Technology',
-                    description: 'Coordinate with the Technical Director on current programming tasks. Collaborate with other programmers to design and implement features. Quickly produce well-organized, optimized, and documented source code. Create and document software tools required by artists or other developers. Debug existing source code and polish feature sets. Contribute to technical design documentation. Work independently when required. Continuously learn and improve skills. Attention to detail is essential and all tasks must be carried out to the highest standard.',
-                    requirement: 'Software development degree or four years of professional experience. Proficiency with the C#, C++, Objective-C, or JavaScript programming languages. Excellent debugging and problem-solving skills. English language fluency.',
-                    beneficial_skills: 'Unity or Unreal game engine experience. Web development skills (HTML/CSS, JavaScript)',
-                    experience_level: 'Intermediate',
-                    allowance: null,
-                    closing_date: '2022-05-20',
-                    photo: 'https://play-lh.googleusercontent.com/wA0BQ3N59FIceoUjBi16016i-11sRlsHpLFgFTh2RmLFfmjcwFlEIysjdNlW1VXmBVfl',
-                    user_id: this.$page.props.user.id,
-                    company: this.$page.props.user.name,
-                    duration: null,
-                },
                 form: this.$inertia.form({
-                    _method: 'POST',
-                    title: null,
-                    location: null,
-                    type: "",
-                    industry: "",
-                    description: null,
-                    requirement: null,
-                    beneficial_skills: null,
-                    experience_level: "",
-                    allowance: null,
-                    closing_date: null,
+                    _method: 'PUT',
+                    id: this.$page.props.selectedJob.id,
+                    title: this.$page.props.selectedJob.title,
+                    location: this.$page.props.selectedJob.location,
+                    type: this.$page.props.selectedJob.type,
+                    industry: this.$page.props.selectedJob.industry,
+                    description: this.$page.props.selectedJob.description,
+                    requirement: this.$page.props.selectedJob.requirement,
+                    beneficial_skills: this.$page.props.selectedJob.beneficial_skills,
+                    experience_level: this.$page.props.selectedJob.experience_level,
+                    allowance: this.$page.props.selectedJob.allowance,
+                    closing_date: this.$page.props.selectedJob.closing_date,
+                    photo_url: this.$page.props.selectedJob.cover_image_url,
                     photo: null,
-                    user_id: this.$page.props.user.id,
-                    company: this.$page.props.user.name,
-                    duration: null,
+                    user_id: this.$page.props.selectedJob.user_id,
+                    company: this.$page.props.selectedJob.company,
+                    duration: this.$page.props.selectedJob.duration,
                 }),
                 photoPreview: null
             }
@@ -338,7 +324,7 @@
                 if (this.$refs.photo) {
                     this.form.photo = this.$refs.photo.files[0];
                 }
-                this.form.post(this.route('jobposts.store'));
+                this.form.post(`/jobposts/${this.$page.props.selectedJob.id}`);
             },
         },
     })

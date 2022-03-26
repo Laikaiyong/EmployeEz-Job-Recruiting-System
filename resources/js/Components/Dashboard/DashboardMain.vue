@@ -2,36 +2,32 @@
     <div class="py-12">
         <!-- Recruiter dashboard -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" v-if="$page.props.user.current_team_id==2">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="inline-block" style="max-width: 300px">
-                    <vue3-chart-js v-bind="{ ...pieChart }" />
-                </div>
-                <div class="inline-block" style="max-width: 300px">
-                    <vue3-chart-js v-bind="{ ...doughnutChart }" />
-                </div>
-                <div class="inline-block" style="width: 600px">
-                    <vue3-chart-js v-bind="{ ...barChart }" />
-                </div>
-                <div class="inline-block" style="width: 600px">
-                    <vue3-chart-js v-bind="{ ...radarChart }" />
-                </div>
-                <div class="inline-block" style="width: 600px">
-                    <vue3-chart-js v-bind="{ ...lineChart }" />
-                </div>
-            </div>
+            <recruiter></recruiter>
+        </div>
+        <!-- Job Seeker -->
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" v-else-if="$page.props.user.current_team_id==3">
+            <job-seeker></job-seeker>
+        </div>
+        <!-- Admin -->
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" v-else>
+            <admin></admin>
         </div>
     </div>
 </template>
 
 <script>
 import Vue3ChartJs from "@j-t-mcc/vue3-chartjs";
+import Recruiter from '@/Components/Dashboard/Recruiter.vue';
+import Admin from '@/Components/Dashboard/Admin.vue';
+import JobSeeker from '@/Components/Dashboard/JobSeeker.vue';
+
 const pieChart = {
     type: "pie",
     data: {
-        labels: ["Internship", "Part Time", "Full Time", "Contract"],
+        labels: ["Recruiter", "Job Seeker", "Admin"],
         datasets:[
         {
-            backgroundColor: ["#41B883", "#E46651", "#00D8FF", "#DD1B16"],
+            backgroundColor: ["text center", "#E46651", "#00D8FF", "#DD1B16"],
             data: [10, 2, 8, 5],
         },
         ],
@@ -230,7 +226,10 @@ const lineChart = {
 
 export default {
     components: {
-        Vue3ChartJs
+        Vue3ChartJs,
+        Recruiter,
+        Admin,
+        JobSeeker
     },
     setup() {
         return {

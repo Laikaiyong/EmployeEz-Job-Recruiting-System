@@ -16,7 +16,7 @@
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div class="hidden space-x-8 md:-my-px md:ml-10 md:flex">
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
@@ -30,7 +30,7 @@
                                       Company
                                 </jet-nav-link>
                                 <jet-nav-link v-if="$page.props.user.current_team_id==3" :href="route('jobs.applied')" :active="route().current('jobs.applied')">
-                                      Application
+                                      Applied
                                 </jet-nav-link>
                                 <jet-nav-link v-if="$page.props.user.current_team_id==2" :href="route('jobs.created')" :active="route().current('jobs.created')">
                                       JobPost
@@ -44,7 +44,7 @@
                             </div>
                         </div>
 
-                        <div class="hidden sm:flex sm:items-center sm:ml-6">
+                        <div class="hidden md:flex md:items-center md:ml-6">
                             <div class="ml-3 relative">
                                 <!-- Teams Dropdown -->
                                 <jet-dropdown align="right" width="60" v-if="$page.props.jetstream.hasTeamFeatures">
@@ -148,7 +148,7 @@
                         </div>
 
                         <!-- Hamburger -->
-                        <div class="-mr-2 flex items-center sm:hidden">
+                        <div class="-mr-2 flex items-center md:hidden">
                             <button @click="showingNavigationDropdown = ! showingNavigationDropdown" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
                                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                     <path :class="{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -160,7 +160,7 @@
                 </div>
 
                 <!-- Responsive Navigation Menu -->
-                <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
+                <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="md:hidden">
                     <div class="pt-2 pb-1 space-y-1">
                         <jet-responsive-nav-link  :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
@@ -183,7 +183,7 @@
                     </div>
                     <div v-if="$page.props.user.current_team_id==3" class="pt-1 pb-3 space-y-1">
                         <jet-responsive-nav-link :href="route('jobs.applied')" :active="route().current('jobs.applied')">
-                            Application
+                            Applied
                         </jet-responsive-nav-link>
                     </div>
                     <div v-if="$page.props.user.current_team_id==2" class="pt-1 pb-3 space-y-1">

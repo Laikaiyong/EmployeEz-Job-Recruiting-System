@@ -17,6 +17,13 @@ class CreateApplicationsTable extends Migration
             $table->id();
             $table->string('resume');
             $table->foreignId('jobpostid');
+            $table->string('jobpost_type');
+            $table->string('jobpost_title');
+            $table->string('jobpost_location');
+            $table->string('jobpost_industry');
+            $table->string('jobpost_cover');
+            $table->foreignId('company_id');
+            $table->string('company_name');
             $table->foreignId('user_id');
             $table->string('user_name');
             $table->text('additional_comments')->nullable();
