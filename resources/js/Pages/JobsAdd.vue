@@ -204,7 +204,7 @@
             <!-- Submit Buttons -->
             <div class="flex justify-center py-4 mt-4 mb-8">
                 <jet-button
-                class="inline-block px-12 py-2.5 ml-6 bg-blue-600 text-white font-medium text-base leading-tight uppercase rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                class="inline-block px-12 py-2.5 ml-6 bg-blue-600 text-white font-medium text-base leading-tight rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                 type="submit"
                 :class="{ 'opacity-25': form.processing }" 
                 :disabled="form.processing">

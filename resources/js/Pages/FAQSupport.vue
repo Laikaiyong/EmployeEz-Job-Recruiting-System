@@ -27,14 +27,14 @@
         <template v-if="$page.props.user">
         <!-- Job management questions -->
         <div class="lg:max-w-6xl lg:mx-auto mx-4 mt-10" v-if="$page.props.user.current_team_id==2">
-            <h1 class="text-3xl text-center font-bold">About job managements</h1>
+            <h1 class="text-xl lg:text-3xl text-center font-bold">About job managements</h1>
             <div class="flex flex-col justify-center items-center space-y-6 justify-start py-4 mt-4 lg:max-w-3xl lg:mx-auto">
                 <div class="w-full" v-for="(job_faq, index) in management_faqs" :key="index">
-                    <details class="inline-block py-6 px-6 w-full bg-white font-medium text-xl text-left leading-tight rounded-lg shadow-lg hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-0 active:shadow-xl transition duration-150 ease-in-out">
+                    <details class="inline-block py-6 px-6 w-full bg-white font-medium text-base lg:text-xl text-left leading-tight rounded-lg shadow-lg hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-0 active:shadow-xl transition duration-150 ease-in-out">
                         <summary>
                             {{ job_faq.question }}
                         </summary>
-                        <div class="text-base px-4 pt-4">
+                        <div class="text-sm lg:text-base px-4 pt-4">
                             <p class="mb-4">
                                 {{ job_faq.answer }}
                             </p>
@@ -46,14 +46,14 @@
 
         <!-- Job application questions -->
         <div class="lg:max-w-6xl lg:mx-auto mx-4 mt-10" v-else-if="$page.props.user.current_team_id==3">
-            <h1 class="text-3xl text-center font-bold">About job application</h1>
+            <h1 class="text-xl lg:text-3xl text-center font-bold">About job application</h1>
             <div class="flex flex-col justify-center items-center space-y-6 justify-start py-4 mt-4 lg:max-w-3xl lg:mx-auto">
                 <div class="w-full" v-for="(job_faq, index) in job_faqs" :key="index">
-                    <details class="inline-block py-6 px-6 w-full bg-white font-medium text-xl text-left leading-tight rounded-lg shadow-lg hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-0 active:shadow-xl transition duration-150 ease-in-out">
+                    <details class="inline-block py-6 px-6 w-full bg-white font-medium text-base lg:text-xl text-left leading-tight rounded-lg shadow-lg hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-0 active:shadow-xl transition duration-150 ease-in-out">
                         <summary>
                             {{ job_faq.question }}
                         </summary>
-                        <div class="text-base px-4 pt-4">
+                        <div class="text-sm lg:text-base px-4 pt-4">
                             <p class="mb-4">
                                 {{ job_faq.answer }}
                             </p>
@@ -66,14 +66,14 @@
 
         <!-- Account questions -->
         <div class="lg:max-w-6xl lg:mx-auto mx-4 my-10">
-            <h1 class="text-3xl text-center font-bold">About my account</h1>
+            <h1 class="text-xl lg:text-3xl text-center font-bold">About my account</h1>
             <div class="flex flex-col justify-center items-center space-y-6 justify-start py-4 mt-4 lg:max-w-3xl lg:mx-auto">
                 <div class="w-full" v-for="(account_faq, index) in account_faqs" :key="index + 3">
-                    <details class="inline-block py-6 px-6 w-full bg-white font-medium text-xl text-left leading-tight rounded-lg shadow-lg hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-0 active:shadow-xl transition duration-150 ease-in-out">
+                    <details class="inline-block py-6 px-6 w-full bg-white font-medium text-base lg:text-xl text-left leading-tight rounded-lg shadow-lg hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-0 active:shadow-xl transition duration-150 ease-in-out">
                         <summary>
                             {{ account_faq.question }}
                         </summary>
-                        <div class="text-base px-4 pt-4">
+                        <div class="text-sm lg:text-base px-4 pt-4">
                             <p class="mb-4">
                                 {{ account_faq.answer }}
                             </p>

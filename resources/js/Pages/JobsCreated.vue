@@ -82,18 +82,24 @@
                 v-if="showingModal(index)"
                 :id="'Modal' + index"
                 class="modal fixed inset-0 w-full h-screen flex justify-center items-center bg-black">
-                    <div class="w-full max-w-lg bg-white shadow-lg rounded-lg">
-                        <!-- Modal Header -->
-                        <div class="flex flex-shrink-0 justify-between items-center w-full bg-clip-padding rounded-md outline-none border-b border-gray-200 px-4">
-                            <h2 class="text-2xl text-left text-red-500 font-bold">Job Post Deletion</h2>
-                            
-                            <!-- Closing button -->
+                    <div class="w-full lg:max-w-xl mx-4 bg-white shadow-lg rounded-lg">
+                        <!-- Closing button -->
+                        <div class="flex justify-end">
                             <button
                             aria-label="close"
                             class="text-2xl text-gray-500 my-2 mx-4"
                             @click.prevent="close()">
                                 ×
                             </button>
+                        </div>
+                            
+                        <!-- Modal Image -->
+                        <div class="flex flex-shrink-0 justify-center items-center w-full bg-clip-padding rounded-md outline-none px-4">
+                            <img 
+                            src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/Throw_away_re_x60k.svg" 
+                            alt="SVG LOGO"
+                            width="200"
+                            height="120">
                         </div>
                         
                         <!-- Modal Message -->
@@ -104,12 +110,12 @@
                         </div>
 
                         <!-- Close and Confirm buttons -->
-                        <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t border-gray-200 px-4 pt-4 my-4">
+                        <div class="flex flex-shrink-0 flex-wrap items-center justify-center space-x-4 rounded-b-md px-4 pt-4 my-4">
                             <button 
                             type="button"
-                            class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                            class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
                             @click="close()">
-                                Close
+                                Cancel
                             </button>
                             <button 
                             type="button"
