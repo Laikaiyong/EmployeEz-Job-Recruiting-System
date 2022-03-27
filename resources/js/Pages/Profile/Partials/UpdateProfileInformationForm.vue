@@ -62,7 +62,19 @@
                 <jet-input-error :message="form.errors.description" class="mt-2" />
             </div>
 
-            <!-- Title -->
+            <!-- Contact Number -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="contact_number" value="Contact Number" />
+                <jet-input id="contact_number" type="text" class="mt-1 block w-full" v-model="form.contact_number" />
+                <jet-input-error :message="form.errors.contact_number" class="mt-2" />
+            </div>
+
+            <!-- Url -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="url" value="Url" />
+                <jet-input id="url" type="text" class="mt-1 block w-full" v-model="form.url" />
+                <jet-input-error :message="form.errors.url" class="mt-2" />
+            </div>
         </template>
 
         <template #actions>
@@ -109,6 +121,8 @@
                     name: this.user.name,
                     email: this.user.email,
                     description: this.user.description,
+                    contact_number: this.user.contact_number,
+                    url: this.user.url,
                     photo: null,
                 }),
 

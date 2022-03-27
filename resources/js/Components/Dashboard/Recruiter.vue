@@ -1,7 +1,7 @@
 <template>
     <div class="grid place-content-center bg-white lg:grid-cols-8 sm:rounded-lg">
         <div class="grid place-self-center w-[300px] mx-2 my-2 lg:col-start-2 lg:col-span-1 lg:w-[350px]">
-            <h1 class=" my-2 text-center font-semibold text-lg">Summary</h1>
+            <h1 class=" my-2 text-center font-semibold text-lg">Company Summary</h1>
             <p class="text-center mb-4 text-md"><span class="font-semibold">Total Application: </span>{{ totalApplication }}</p>
             <p class="text-center mb-4 text-md"><span class="font-semibold">Total Job Post: </span>{{ totalJobPost }}</p>
         </div>
@@ -34,7 +34,7 @@ export default {
         {
             if(this.$page.props.applications[applyNumber].company_id == this.$page.props.user.id)
             {
-                totalJobPost++;
+                totalApplication++;
             }
         }
 

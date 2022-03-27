@@ -177,12 +177,15 @@
         },
         data() {
             var appliedJobs = [];
-            for(let applyId = 0; applyId <= (this.$page.props.applied_jobs.data).length - 1; applyId++)
+            if(this.$page.props.applied_jobs)
             {
-                if(this.$page.props.user.id == this.$page.props.applied_jobs.data[applyId].user_id)
+            for(let applyId = 0; applyId <= (this.$page.props.applied_jobs).length - 1; applyId++)
+            {
+                if(this.$page.props.user.id == this.$page.props.applied_jobs[applyId].user_id)
                 {
-                    appliedJobs.push(this.$page.props.applied_jobs.data[applyId]);
+                    appliedJobs.push(this.$page.props.applied_jobs[applyId]);
                 }
+            }
             }
             return {
                 selectedTab: 'Applied Job',

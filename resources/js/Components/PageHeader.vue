@@ -35,6 +35,9 @@
                                 <jet-nav-link v-if="$page.props.user.current_team_id==2" :href="route('jobs.created')" :active="route().current('jobs.created')">
                                       JobPost
                                 </jet-nav-link>
+                                <jet-nav-link v-if="$page.props.user.current_team_id==2" :href="route('application.list')" :active="route().current('application.list')">
+                                      Application
+                                </jet-nav-link>
                                 <jet-nav-link :href="route('aboutus')" :active="route().current('aboutus')">
                                         About
                                 </jet-nav-link>
@@ -189,6 +192,11 @@
                     <div v-if="$page.props.user.current_team_id==2" class="pt-1 pb-3 space-y-1">
                         <jet-responsive-nav-link :href="route('jobs.created')" :active="route().current('jobs.created')">
                             JobPost
+                        </jet-responsive-nav-link>
+                    </div>
+                    <div v-if="$page.props.user.current_team_id==2" class="pt-1 pb-3 space-y-1">
+                        <jet-responsive-nav-link :href="route('application.list')" :active="route().current('application.list')">
+                            Application
                         </jet-responsive-nav-link>
                     </div>
                     <div class="pt-1 pb-3 space-y-1">
