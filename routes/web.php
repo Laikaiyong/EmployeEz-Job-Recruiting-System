@@ -204,6 +204,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/jobs/{id}/apply', functio
     ]);
 })->where(['id' => '[0-9]+'])->name('jobs.apply');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/apply', function () {
+    return Inertia::render('ViewApplications', [
+        'applications' => Apply::select('*')->get()
+    ]);
+})->name('application.list');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/apply/{id}', function ($id) {
+    return Inertia::render('ApplicationProfile', [
+        'selectedApply' => Apply::where('id', $id)->first()
+    ]);
+})->where(['id' => '[0-9]+'])->name('application.profile');
+
 Route::get('/user/{id}/{name}', function(Request $request, $id, $name){
     return Inertia::render('UserProfile', [
         'selectedUser' => User::select("*")

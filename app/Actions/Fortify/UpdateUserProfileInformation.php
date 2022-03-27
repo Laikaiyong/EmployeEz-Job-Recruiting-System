@@ -21,8 +21,9 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            // 'contact_number' => ['required', 'numeric', 'phone_number', 'regex:/(01)[0-9]{9|10}/'],
+            'contact_number' => ['nullable', 'numeric', 'phone_number', 'regex:/(01)[0-9]{9|10}/'],
             'description' => ['required', 'string', 'max:1024'],
+            'url' => ['nullable', 'string'],
             // 'title' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
             // 'cover_image' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
@@ -42,6 +43,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $user->forceFill([
                 'name' => $input['name'],
                 'email' => $input['email'],
+                'contact_number' => $input['contact_number'],
+                'url' => $input['url'],
                 // 'title' => $input['title'],
                 'description' => $input['description'],
                 // 'cover_image_url' => '/storage/'.$cover_path

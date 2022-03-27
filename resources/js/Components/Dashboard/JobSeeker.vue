@@ -5,7 +5,7 @@
             <vue3-chart-js v-bind="{ ...doughnutChart }" />
         </div>
         <div class="grid lg:col-start-4 lg:col-span-5 h-full w-[450px] md:w-[590px] mx-2 my-2">
-            <h1 class="text-center my-2 font-semibold text-lg">All Applications per Category</h1>
+            <h1 class="text-center my-2 font-semibold text-lg">Existing Jobs per Category</h1>
             <vue3-chart-js class="mb-10" v-bind="{ ...barChart }" />
         </div>
     </div>

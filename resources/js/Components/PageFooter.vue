@@ -50,7 +50,7 @@
               </li>
               <li>
                 <a
-                href="/about" 
+                href="/aboutus" 
                 class="text-gray-600 hover:text-gray-800">About Us</a>
               </li>
               <li>

@@ -2,6 +2,13 @@
     <Head title="JobPost"></Head>
     <page-header v-if="$page.props.user"></page-header>
     
+    <div class="mt-10 text-right text-gray-600 mr-20 xl:mr-30">
+        <a
+        :href="route('jobs.add')"
+        class="px-2 py-2 border border-transparent text-base rounded-md text-white bg-indigo-600 hover:bg-indigo-700 text-md">
+            Add New Job
+        </a>
+    </div>
     <!-- Job cards -->
     <div class="lg:max-w-7xl lg:mx-auto grid job-container justify-center gap-y-10 mx-4 my-10">
         <div
