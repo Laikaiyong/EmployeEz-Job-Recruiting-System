@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             SeekerSeeder::class,
             CompanySeeder::class,
-            JobSeeder::class
+            JobSeeder::class,
+            AdditionalSeekerSeeder::class,
+            ApplicationSeeder::class
         ]);
     }
 }

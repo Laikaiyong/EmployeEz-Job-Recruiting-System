@@ -10,6 +10,7 @@ use App\Http\Controllers\GoogleSocialiteController;
 use App\Http\Controllers\GithubSocialiteController;
 use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\VerifyController;
 
 use App\Models\User;
 use App\Models\JobPost;
@@ -142,6 +143,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
                             ->where('type', 'Engineering')
                             ->count(),
         'otherCompanies' => User::select('*')
+                            ->where('current_team_id', 2)
                             ->where('type', '!=', 'Technology')
                             ->where('type', '!=', 'Finance')
                             ->where('type', '!=', 'Engineering')
@@ -240,9 +242,14 @@ Route::get('/company', function (Request $request) {
 
 Route::resource('jobposts', JobPostingController::class);
 Route::resource('application', ApplicationController::class);
+Route::resource('verify', VerifyController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/task', function () {
     return Inertia::render('Task', [
+        'unverified' => User::select('*')
+                        ->where('current_team_id', 2)
+                        ->where('verified', NULL)
+                        ->get()
     ]);
 })->name('task');
 
