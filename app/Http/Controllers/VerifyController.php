@@ -18,13 +18,14 @@ class VerifyController extends Controller
     public function update(Request $request)
     {
         Validator::make($request->all(), [
-            'id' => ['required']
+            'id' => ['required'],
+            'name' => ['required']
         ])->validate();
 
 
         User::find($request->input('id'))->update([
             'verified' => true
         ]);
-        return Redirect::route('root');
+        return Redirect::route('user.profile', ['id' => $request->input('id'), 'name' => $request->input('name')]);
     }
 }

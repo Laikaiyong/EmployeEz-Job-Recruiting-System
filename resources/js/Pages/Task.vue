@@ -35,7 +35,7 @@
                 Profile
                 </a>
                 <button
-                @click="verify(company.id)"
+                @click="verify(company.id, company.name)"
                 class="
                 rounded-md
                 ml-8
@@ -70,13 +70,15 @@
                 form: this.$inertia.form({
                     _method: 'PUT',
                     id: '',
+                    name: ''
                 }),
             }
         },
         methods: {
-            verify(company_id)
+            verify(company_id, company_name)
             {
                 this.form.id = company_id;
+                this.form.name = company_name;
                 this.form.post(`/verify/${company_id}`);
             }
         }
