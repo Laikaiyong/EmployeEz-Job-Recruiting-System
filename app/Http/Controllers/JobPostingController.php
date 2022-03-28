@@ -130,7 +130,7 @@ class JobPostingController extends Controller
         return Redirect::route('jobs.created');
     }
   
-        /**
+    /**
      * destroy
      *
      * @param  mixed $id

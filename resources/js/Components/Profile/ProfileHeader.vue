@@ -19,6 +19,7 @@
 			</template>
 			
 			<h1 class="text-3xl font-bold pt-8 lg:pt-0">{{ $page.props.selectedUser[0].name }}</h1>
+			<p v-show="$page.props.selectedUser[0].verified" class="text-indigo-500"><font-awesome-icon :icon="verifiedIcon"/> Verified </p>
 			<p class="pt-4 text-gray-500 font-bold flex items-center justify-center lg:justify-start">{{ $page.props.selectedUser[0].title }}</p>
 	    </div>
     </div>

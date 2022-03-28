@@ -378,6 +378,7 @@ class CompanySeeder extends Seeder
             'address' => 'Level 23A Menara Milenium, Wilayah Persekutuan, Malaysia, Jalan Damanlela, Damansara Town Centre, 50490 Kuala Lumpur, Federal Territory of Kuala Lumpur',
             'city' => 'Damansara',
             'state' => 'Kuala Lumpur',
+            'verified' => true,
             'created_at' => date(format: 'Y-m-d H:i:s'),
             'updated_at' => date(format: 'Y-m-d H:i:s')
         ]);
