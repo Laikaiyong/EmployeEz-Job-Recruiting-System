@@ -19,7 +19,7 @@
                 {{ company.name }}
                 </h4>
                 <p class="text-sm leading-normal text-justify mb-8">
-                {{ (company.description).substring(0, 125) }} <a :href="route('user.profile', {'id': company.id, 'name': company.name})" class="text-sky-600">View Profile</a>
+                {{ (company.description) ? (company.description).substring(0, 125) : "Description is empty" }} <a v-if="company.description != null" :href="route('user.profile', {'id': company.id, 'name': company.name})" class="text-sky-600">View Profile</a>
                 </p>
                 <a
                 :href="route('user.profile', {'id': company.id, 'name': company.name})"
