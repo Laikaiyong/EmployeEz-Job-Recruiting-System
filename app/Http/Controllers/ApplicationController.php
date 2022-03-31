@@ -77,6 +77,7 @@ class ApplicationController extends Controller
         $post = Application::findOrfail($id);
 
         $post->delete();
-        return Redirect::route('root');
+        return Redirect::route('dashboard');
+        // return Redirect::route('jobs.applied');
     }
 }

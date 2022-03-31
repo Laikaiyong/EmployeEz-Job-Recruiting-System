@@ -10,7 +10,7 @@
     <find-job />
     <find-employer />
     <enquiry-section />
-    <get-started />
+    <get-started v-if="!$page.props.user" />
     <page-footer />
 </template>
 

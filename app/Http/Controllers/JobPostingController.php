@@ -142,7 +142,7 @@ class JobPostingController extends Controller
 
         $post->delete();
         if($post) {
-            return Redirect::route('root');
+            return Redirect::route('dashboard');
         }
     }
 
