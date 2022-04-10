@@ -7,7 +7,7 @@
 
     <!-- Recruiter / Company -->
     <template v-if="$page.props.selectedUser[0].current_team_id == 2">
-
+        <location></location>
     </template>
 
     <!-- Job Seeker -->
@@ -29,6 +29,7 @@
     import PageHeader from '@/Components/PageHeader.vue';
     import ProfileHeader from '@/Components/Profile/ProfileHeader.vue';
     import BioSection from '@/Components/Profile/BioSection.vue';
+    import Location from '@/Components/Profile/Recruiter/Location.vue';
     import ContactDetails from '@/Components/Profile/ContactDetails.vue';
     import PageFooter from '@/Components/PageFooter.vue';
     import { Head } from '@inertiajs/inertia-vue3';
@@ -38,6 +39,7 @@
             UnauthHeader,
             ProfileHeader,
             BioSection,
+            Location,
             ContactDetails,
             PageFooter,
             Head
