@@ -49,8 +49,8 @@ class JobSeeder extends Seeder
             'beneficial_skills' => 'SEO Optimization Skill',
             'cover_image_url' => 'https://d1io3yog0oux5.cloudfront.net/_776c9cc070d4cab6e8157b9f1dc8702c/intel/db/878/6995/social_image_resized.jpg',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-05-20')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -66,8 +66,8 @@ class JobSeeder extends Seeder
             'beneficial_skills' => 'Microsoft-Office-Skills',
             'cover_image_url' => 'https://www.maybank.com/iwov-resources/corporate_new/img/common/key-business-entities-large.jpg',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-05-20')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -90,8 +90,8 @@ class JobSeeder extends Seeder
             'beneficial_skills' => 'Positive Behaviour',
             'cover_image_url' => 'https://www.maybank.com/iwov-resources/corporate_new/img/common/key-business-entities-large.jpg',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-09')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -114,8 +114,8 @@ class JobSeeder extends Seeder
             ',
             'cover_image_url' => 'https://www.maybank.com/iwov-resources/corporate_new/img/common/key-business-entities-large.jpg',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-09')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -146,8 +146,8 @@ class JobSeeder extends Seeder
             ',
             'cover_image_url' => 'https://www.propertyhunter.com.my/transfer/181027143537sunway.png',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-30')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -175,8 +175,8 @@ class JobSeeder extends Seeder
             Self-motivated: You can work with a minimum of supervision and be capable of strategically prioritizing multiple tasks in a proactive manner.',
             'cover_image_url' => 'https://securecdn.pymnts.com/wp-content/uploads/2020/02/moneylion.png',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-05-19')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -211,8 +211,8 @@ class JobSeeder extends Seeder
             GCIH/Security+/CySA+/CEH/ECIH certification.',
             'cover_image_url' => 'https://securecdn.pymnts.com/wp-content/uploads/2020/02/moneylion.png',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-01')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -232,8 +232,8 @@ class JobSeeder extends Seeder
             'beneficial_skills' => '-',
             'cover_image_url' => 'https://mms.businesswire.com/media/20210122005175/en/70213/22/bluelogo.jpg',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-05-20')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -252,8 +252,8 @@ class JobSeeder extends Seeder
             'beneficial_skills' => '-',
             'cover_image_url' => 'https://mms.businesswire.com/media/20210122005175/en/70213/22/bluelogo.jpg',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-05-20')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -269,8 +269,8 @@ class JobSeeder extends Seeder
             'beneficial_skills' => '-',
             'cover_image_url' => 'http://www.restaurantnews.com/wp-content/uploads/2015/10/Texas-Chicken-Opens-Two-New-Restaurants-in-Bulgaria.jpg',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-23')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -292,8 +292,8 @@ class JobSeeder extends Seeder
             'beneficial_skills' => '-',
             'cover_image_url' => 'https://www.maybank.com/iwov-resources/corporate_new/img/common/key-business-entities-large.jpg',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-09')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -318,8 +318,8 @@ class JobSeeder extends Seeder
             • DBMS experience in PostgreSQL, MSSQL',
             'cover_image_url' => 'https://resources.wobbjobs.com/resized/uploads/jobs-malaysia/company_images/5388/jobs-malaysia-infront-consulting-15093695_show.jpg',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-15')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -335,8 +335,8 @@ class JobSeeder extends Seeder
             'beneficial_skills' => 'Excellent verbal communication skills. • Good problem-solving skills. • Attention to detail.',
             'cover_image_url' => 'https://resources.wobbjobs.com/resized/uploads/jobs-malaysia/company_images/5388/jobs-malaysia-infront-consulting-15093695_show.jpg',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-26')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -363,8 +363,8 @@ class JobSeeder extends Seeder
             Excellent organizational, analytical, communication and influencing skills.',
             'cover_image_url' => 'https://cdn.vox-cdn.com/thumbor/Pkmq1nm3skO0-j693JTMd7RL0Zk=/0x0:2012x1341/1200x800/filters:focal(0x0:2012x1341)/cdn.vox-cdn.com/uploads/chorus_image/image/47070706/google2.0.0.jpg',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-20')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -384,8 +384,8 @@ class JobSeeder extends Seeder
             'beneficial_skills' => 'Able to rellocate',
             'cover_image_url' => 'https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/Intel_Xeon_Roadmap_Ice_Lake_Sapphire_Rapids_Granite_Rapids_5_2060x1159.png',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-20')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -401,8 +401,8 @@ class JobSeeder extends Seeder
             'beneficial_skills' => 'Passionate in learning',
             'cover_image_url' => 'https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/Intel_Xeon_Roadmap_Ice_Lake_Sapphire_Rapids_Granite_Rapids_5_2060x1159.png',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-20')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -421,8 +421,8 @@ class JobSeeder extends Seeder
             'beneficial_skills' => 'Your knowledge in developing a website, editing, automation application and scripting are an added advantage.',
             'cover_image_url' => 'https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/Intel_Xeon_Roadmap_Ice_Lake_Sapphire_Rapids_Granite_Rapids_5_2060x1159.png',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-20')),
-            'created_at' => date(format: 'Y-m-d H:i:s'),
-            'updated_at' => date(format: 'Y-m-d H:i:s')
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
         ]);
     }
 }
