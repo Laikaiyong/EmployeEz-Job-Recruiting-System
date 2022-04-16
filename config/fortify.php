@@ -64,8 +64,9 @@ return [
 
     'home' =>  function () {
         $title = Auth::user()->title;
+        $team = Auth::user()->current_team_id;
        
-        if ($title == null)
+        if ($title == null && $team == 2)
         {
             return '/user/profile';   
         }
