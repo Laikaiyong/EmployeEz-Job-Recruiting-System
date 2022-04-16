@@ -21,7 +21,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'contact_number' => ['nullable', 'string', 'phone_number', 'regex:/(01)[0-9]{8|9}/'],
+            'contact_number' => ['nullable', 'regex:/(01)(?=[0-9]*$)(?:.{8}|.{9})$/'],
             'description' => ['required', 'string', 'max:1024'],
             'url' => ['nullable', 'string'],
             // 'title' => ['required', 'string', 'max:255'],

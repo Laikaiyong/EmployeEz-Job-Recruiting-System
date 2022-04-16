@@ -90,8 +90,8 @@ class JobSeeder extends Seeder
             'beneficial_skills' => 'Positive Behaviour',
             'cover_image_url' => 'https://www.maybank.com/iwov-resources/corporate_new/img/common/key-business-entities-large.jpg',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-09')),
-            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
-            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-16')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-16'))
         ]);
 
         DB::table('job_posts')->insert([
@@ -114,8 +114,8 @@ class JobSeeder extends Seeder
             ',
             'cover_image_url' => 'https://www.maybank.com/iwov-resources/corporate_new/img/common/key-business-entities-large.jpg',
             'closing_date' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-04-09')),
-            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06')),
-            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-06'))
+            'created_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-16')),
+            'updated_at' => date(format: 'Y-m-d H:i:s', timestamp: strtotime('2022-03-16'))
         ]);
 
         DB::table('job_posts')->insert([
