@@ -10,6 +10,7 @@
 4. Run #Launch steps.
 5. Run `php artisan key:generate`
 6. Run `php artisan migrate --seed`
+7. Run `php artisan storage:link`
 
 # Launch
 1. Launch XAMPP
