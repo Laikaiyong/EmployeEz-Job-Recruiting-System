@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 use App\Models\Team;
@@ -46,7 +47,7 @@ class GoogleSocialiteController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'google_id'=> $user->id,
-                    'password' => encrypt('google'),
+                    'password' => Hash::make('google'),
                     'online' => false
                 ]);
                 $team = Team::where('id', 3)->first();
