@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 use App\Models\Team;
@@ -46,7 +47,7 @@ class LinkedinSocialiteController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'linkedin_id'=> $user->id,
-                    'password' => encrypt('linkedin'),
+                    'password' => Hash::make('linkedin'),
                     'online' => false
                 ]);
                 $team = Team::where('id', 3)->first();

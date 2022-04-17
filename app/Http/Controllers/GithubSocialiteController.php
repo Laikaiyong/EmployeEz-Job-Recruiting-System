@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 use App\Models\Team;
@@ -46,7 +47,7 @@ class GithubSocialiteController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'github_id'=> $user->id,
-                    'password' => encrypt('github'),
+                    'password' => Hash::make('github'),
                     'online'=> false,
                 ]);
                 $team = Team::where('id', 3)->first();
